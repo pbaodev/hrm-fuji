@@ -1,6 +1,6 @@
 # Use case diagram
 
-Tài liệu này vẽ quan hệ giữa actor và 15 use case trong [UC_01_Catalog.md](UC_01_Catalog.md). Đặc tả từng use case nằm ở [UC_03_Specifications.md](UC_03_Specifications.md).
+Tài liệu này vẽ quan hệ giữa actor và 16 use case trong [UC_01_Catalog.md](UC_01_Catalog.md). Đặc tả từng use case nằm ở [UC_03_Specifications.md](UC_03_Specifications.md).
 
 Mermaid không có ký hiệu use case chuẩn UML, nên sơ đồ dùng flowchart với quy ước sau:
 
@@ -16,7 +16,7 @@ Mermaid không có ký hiệu use case chuẩn UML, nên sơ đồ dùng flowcha
 
 Line Manager cũng là một Employee, nên thực hiện được mọi use case của Employee; sơ đồ không vẽ lại các đường này.
 
-## 1. Tổng quan: actor chính và 15 use case
+## 1. Tổng quan: actor chính và 16 use case
 
 Actor phía nhân viên nằm bên trái, actor phía HR nằm bên phải. Thứ tự khai báo trong mã được sắp ngược để Mermaid vẽ ít đường cắt nhau nhất.
 
@@ -29,6 +29,7 @@ flowchart LR
     subgraph SYS["AI Workforce Ecosystem"]
         subgraph GC["C. HR Ecosystem AI"]
             UC15(["UC-15 Điều phối offboarding<br/>và bàn giao tri thức"])
+            UC16(["UC-16 Xử lý nhân sự bị ảnh hưởng<br/>khi thu hẹp đơn vị"])
             UC13(["UC-13 Đề xuất phương án<br/>bố trí nhân sự"])
             UC14(["UC-14 Chuẩn bị buổi 1-1"])
             UC12(["UC-12 Xây dựng và xác thực<br/>hồ sơ kỹ năng"])
@@ -67,6 +68,7 @@ flowchart LR
 
     UC15 === OPS
     UC09 === OPS
+    UC16 === HRBP
     UC13 === HRBP
     UC10 === HRBP
     UC06 === HRBP
@@ -167,18 +169,22 @@ flowchart LR
         UC13(["UC-13 Đề xuất phương án<br/>bố trí nhân sự"])
         UC14(["UC-14 Chuẩn bị buổi 1-1"])
         UC15(["UC-15 Điều phối offboarding<br/>và bàn giao tri thức"])
+        UC16(["UC-16 Xử lý nhân sự bị ảnh hưởng<br/>khi thu hẹp đơn vị"])
     end
 
     IT["«actor»<br/>IT"]
     FIN["«actor»<br/>Finance"]
     PM["«actor»<br/>Project Manager"]
     BUH["«actor»<br/>BU Head"]
+    CHRO["«actor»<br/>CHRO"]
+    LEGAL["«actor»<br/>Pháp chế"]
 
     EMP === UC11
     EMP === UC12
     LM === UC11
     LM === UC14
     HRBP === UC13
+    HRBP === UC16
     OPS === UC15
 
     OPS --- UC11
@@ -189,6 +195,9 @@ flowchart LR
     EMP --- UC14
     EMP --- UC15
     LM --- UC15
+    EMP --- UC16
+    LM --- UC16
+    OPS --- UC16
 
     UC11 --- IT
     UC11 --- FIN
@@ -196,6 +205,9 @@ flowchart LR
     UC13 --- BUH
     UC15 --- IT
     UC15 --- FIN
+    UC16 --- BUH
+    UC16 --- CHRO
+    UC16 --- LEGAL
 ```
 
 ## 5. Quan hệ giữa các use case
@@ -220,15 +232,18 @@ flowchart LR
     UC13(["UC-13 Phương án bố trí"])
     UC14(["UC-14 Chuẩn bị 1-1"])
     UC15(["UC-15 Offboarding"])
+    UC16(["UC-16 Thu hẹp đơn vị"])
 
     UC02 -. "«include»" .-> UC11
     UC13 -. "«include»" .-> UC11
     UC15 -. "«include»" .-> UC11
+    UC16 -. "«include»" .-> UC13
 
     UC11 -. "«extend»" .-> UC01
     UC11 -. "«extend»" .-> UC09
     UC04 -. "«extend»" .-> UC05
     UC04 -. "«extend»" .-> UC13
+    UC15 -. "«extend»" .-> UC16
 
     UC12 == "dữ liệu kỹ năng" ==> UC04
     UC12 == "dữ liệu kỹ năng" ==> UC05
@@ -236,6 +251,7 @@ flowchart LR
     UC12 == "dữ liệu kỹ năng" ==> UC13
 
     UC06 -- "nối tiếp" --> UC13
+    UC06 -- "nối tiếp" --> UC16
     UC13 -- "nối tiếp" --> UC07
     UC14 -- "nối tiếp" --> UC08
 ```
@@ -247,11 +263,14 @@ UC-03 và UC-10 không có quan hệ với use case khác nên không xuất hi�
 | UC-02 gọi UC-11 | «include» | Yêu cầu nghỉ phép sau khi được nhân viên xác nhận luôn được chuyển cho bộ điều phối để duyệt và theo dõi |
 | UC-13 gọi UC-11 | «include» | Phương án bố trí được duyệt luôn được thực hiện qua bộ điều phối: cập nhật phân bổ, quyền truy cập, thông báo |
 | UC-15 gọi UC-11 | «include» | Checklist offboarding luôn chạy trên bộ điều phối |
+| UC-16 gọi UC-13 | «include» | Mỗi người bị ảnh hưởng luôn được tìm phương án bố trí nội bộ trước khi xét cắt giảm |
+| UC-15 mở rộng UC-16 | «extend» | Chỉ khi quyết định cắt giảm được phê duyệt thì offboarding mới khởi chạy |
 | UC-11 mở rộng UC-01 | «extend» | Chỉ khi câu hỏi của ứng viên là một thủ tục cần xử lý, ví dụ đổi lịch phỏng vấn hoặc bổ sung hồ sơ |
 | UC-11 mở rộng UC-09 | «extend» | Chỉ khi một bất thường cần nhân viên hoặc manager xác nhận |
 | UC-04 mở rộng UC-05 | «extend» | Chỉ khi cơ hội nhân viên quan tâm còn skill gap |
 | UC-04 mở rộng UC-13 | «extend» | Chỉ khi phương án bố trí khớp một phần và cần reskill |
 | UC-12 cấp dữ liệu cho UC-04, 05, 06, 13 | Dữ liệu | Bốn use case này đọc hồ sơ kỹ năng; chất lượng của chúng phụ thuộc độ phủ và độ mới của hồ sơ |
 | UC-06 nối tiếp UC-13 | Nối tiếp | Gap được chọn đóng bằng nội bộ trở thành nhu cầu nhân lực để tìm phương án bố trí |
+| UC-06 nối tiếp UC-16 | Nối tiếp | Khi phân tích cung–cầu dẫn tới quyết định thu hẹp, danh sách vị trí dư trở thành đầu vào của UC-16 |
 | UC-13 nối tiếp UC-07 | Nối tiếp | Khi không có phương án nội bộ, nhu cầu chuyển sang tuyển ngoài |
 | UC-14 nối tiếp UC-08 | Nối tiếp | Ghi chú 1:1 chỉ trở thành bằng chứng đánh giá khi manager chủ động đưa vào |

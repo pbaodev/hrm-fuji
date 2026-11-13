@@ -136,3 +136,20 @@ Nguồn dữ liệu kỹ năng chung cho học tập, cơ hội nội bộ và s
   - Lộ trình học và thời gian ước tính để đủ điều kiện
 - [Người] Nhân viên đồng ý, BU Head duyệt
   - "Không khớp" không phải căn cứ cho layoff
+
+## Restructuring & Transition (Thu hẹp đơn vị và cắt giảm nhân sự)
+
+Xử lý nhân sự bị ảnh hưởng khi một đơn vị hoặc dự án thu hẹp: bố trí lại trước, cắt giảm là phương án cuối. Feature mới 16, nối feature 13 và 15.
+
+- [Rules] Danh sách bị ảnh hưởng theo tiêu chí đã duyệt
+  - Lập theo vị trí và dự án bị thu hẹp, không theo cá nhân
+  - AI không chọn và không xếp hạng ai bị cắt giảm
+- [AI] Tìm phương án nội bộ, học bù cho từng người
+  - Dùng lại cơ chế xếp hạng của Staffing & Redeployment
+  - Khớp một phần thì kèm lộ trình học và thời gian ước tính
+- [AI] Soạn hồ sơ rà soát khi hết phương án
+  - Ghi phương án đã thử, lý do không khả thi, quyền lợi theo chính sách
+  - Gắn cờ trường hợp cần pháp chế xem kỹ: thai sản, nghỉ ốm dài ngày, đang khiếu nại
+- [Người] Pháp chế rà soát, lãnh đạo quyết định
+  - HRBP và pháp chế rà soát từng hồ sơ; BU Head đề xuất; CHRO phê duyệt
+  - Không dùng tuổi, giới tính, lương, tình trạng sức khỏe làm tiêu chí

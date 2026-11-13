@@ -1,6 +1,6 @@
 # Đặc tả use case
 
-Tài liệu này đặc tả 15 use case trong [UC_01_Catalog.md](UC_01_Catalog.md), mỗi feature của [AI_Workforce_Ecosystem.md](../01-overview/AI_Workforce_Ecosystem.md) một use case. Sơ đồ nằm ở [UC_02_Diagrams.md](UC_02_Diagrams.md).
+Tài liệu này đặc tả 16 use case trong [UC_01_Catalog.md](UC_01_Catalog.md): mỗi feature của [AI_Workforce_Ecosystem.md](../01-overview/AI_Workforce_Ecosystem.md) một use case, cộng UC-16 (thu hẹp đơn vị, layoff) được bổ sung sau. Sơ đồ nằm ở [UC_02_Diagrams.md](UC_02_Diagrams.md).
 
 Cách đọc:
 
@@ -12,7 +12,7 @@ Mục lục:
 
 - Nhóm A, Employee AI: [UC-01](#uc-01-tra-cứu-trạng-thái-ứng-tuyển-và-thủ-tục-nhận-việc), [UC-02](#uc-02-tạo-và-theo-dõi-yêu-cầu-nghỉ-phép-qua-hội-thoại), [UC-03](#uc-03-tìm-và-tóm-tắt-tri-thức-nội-bộ), [UC-04](#uc-04-lập-lộ-trình-học-theo-skill-gap), [UC-05](#uc-05-khám-phá-và-bày-tỏ-quan-tâm-tới-cơ-hội-nội-bộ)
 - Nhóm B, HR Management AI: [UC-06](#uc-06-phân-tích-chênh-lệch-cungcầu-nhân-lực-của-đơn-vị), [UC-07](#uc-07-sàng-lọc-và-xếp-hạng-hồ-sơ-ứng-viên-cho-một-vị-trí), [UC-08](#uc-08-tổng-hợp-hồ-sơ-bằng-chứng-cho-kỳ-đánh-giá), [UC-09](#uc-09-phát-hiện-và-xử-lý-bất-thường-côngot-trước-kỳ-chốt-lương), [UC-10](#uc-10-phân-tích-sức-khỏe-tổ-chức-ở-cấp-đơn-vị)
-- Nhóm C, HR Ecosystem AI: [UC-11](#uc-11-điều-phối-một-yêu-cầu-xuyên-phòng-ban), [UC-12](#uc-12-xây-dựng-và-xác-thực-hồ-sơ-kỹ-năng), [UC-13](#uc-13-đề-xuất-phương-án-bố-trí-nhân-sự-cho-một-nhu-cầu-dự-án), [UC-14](#uc-14-chuẩn-bị-buổi-11-với-thành-viên-nhóm), [UC-15](#uc-15-điều-phối-offboarding-và-bàn-giao-tri-thức)
+- Nhóm C, HR Ecosystem AI: [UC-11](#uc-11-điều-phối-một-yêu-cầu-xuyên-phòng-ban), [UC-12](#uc-12-xây-dựng-và-xác-thực-hồ-sơ-kỹ-năng), [UC-13](#uc-13-đề-xuất-phương-án-bố-trí-nhân-sự-cho-một-nhu-cầu-dự-án), [UC-14](#uc-14-chuẩn-bị-buổi-11-với-thành-viên-nhóm), [UC-15](#uc-15-điều-phối-offboarding-và-bàn-giao-tri-thức), [UC-16](#uc-16-xử-lý-nhân-sự-bị-ảnh-hưởng-khi-thu-hẹp-đơn-vị)
 
 ------------------------------------------------------------------------
 
@@ -752,3 +752,61 @@ Mục lục:
 **Điểm con người quyết định:** Line Manager xác nhận bàn giao đạt; HR Ops đóng hồ sơ.
 
 **Chỉ số đo:** tỷ lệ thu hồi quyền đúng ngày; tỷ lệ hạng mục bàn giao được người nhận xác nhận; thời gian hoàn tất offboarding.
+
+------------------------------------------------------------------------
+
+## UC-16. Xử lý nhân sự bị ảnh hưởng khi thu hẹp đơn vị
+
+| Mục | Nội dung |
+|---|---|
+| Feature nguồn | 16. AI Restructuring & Transition Agent (bổ sung, nối feature 13 và 15) |
+| Mục tiêu | Khi một đơn vị hoặc dự án thu hẹp, mỗi người bị ảnh hưởng được tìm phương án nội bộ trước; chỉ cắt giảm khi không còn phương án và quyết định đã qua rà soát |
+| Actor chính | HRBP |
+| Actor phụ | BU Head, CHRO, pháp chế, Line Manager, Employee bị ảnh hưởng, HR Ops |
+| Hệ thống liên quan | HRIS, Project Management, hồ sơ kỹ năng, LMS, workflow engine |
+| Trigger | Quyết định thu hẹp một đơn vị hoặc dự án được cấp có thẩm quyền phê duyệt, kèm số vị trí và ngày hiệu lực |
+| Tiền điều kiện | Có quyết định thu hẹp bằng văn bản; tiêu chí xác định vị trí bị ảnh hưởng đã được pháp chế duyệt; hồ sơ kỹ năng (UC-12) của những người liên quan còn hiệu lực |
+| Hậu điều kiện | Mỗi người bị ảnh hưởng có một kết quả: điều chuyển, học bù để điều chuyển, hoặc quyết định cắt giảm đã được phê duyệt và chuyển sang UC-15 |
+| Bảo đảm tối thiểu | Không ai nhận thông báo cắt giảm khi chưa có rà soát của pháp chế và phê duyệt của CHRO; mọi bước đều được lưu vết |
+
+**Luồng chính**
+
+1. HRBP mở hồ sơ thu hẹp từ quyết định đã duyệt: đơn vị, số vị trí, ngày hiệu lực.
+2. Rules lập danh sách vị trí bị ảnh hưởng theo tiêu chí đã duyệt (theo vị trí và dự án, không theo cá nhân).
+3. Với từng người, hệ thống gọi UC-13 để tìm vị trí nội bộ: rules lọc ràng buộc cứng, AI xếp hạng phương án kèm bằng chứng.
+4. Khi chỉ khớp một phần, AI đề xuất lộ trình học bù (UC-04) và thời gian ước tính.
+5. HRBP và Line Manager trao đổi trực tiếp với từng nhân viên; nhân viên chọn và đồng ý phương án; điều chuyển chạy qua UC-13.
+6. Với người không còn phương án, AI soạn hồ sơ rà soát: phương án đã thử, lý do không khả thi, quyền lợi theo chính sách, các điểm cần pháp chế xem.
+7. HRBP và pháp chế rà soát từng hồ sơ, đồng thời kiểm tra danh sách có lệch bất thường theo nhóm tuổi, giới tính hay không.
+8. BU Head đề xuất; CHRO phê duyệt.
+9. Line Manager và HRBP thông báo trực tiếp cho nhân viên, kèm gói hỗ trợ theo chính sách.
+10. Hệ thống khởi chạy offboarding (UC-15).
+
+**Luồng thay thế và ngoại lệ**
+
+- **3a.** Có vị trí phù hợp ở đơn vị khác nhưng đang chờ duyệt ngân sách: hệ thống giữ hồ sơ ở trạng thái chờ đến hạn N ngày rồi báo HRBP.
+- **5a.** Nhân viên từ chối mọi phương án nội bộ: ghi lý do, chuyển sang bước 6.
+- **5b.** Nhân viên muốn tự tìm cơ hội: hệ thống mở UC-05 với ưu tiên hiển thị cho người thuộc diện bị ảnh hưởng.
+- **7a.** Hồ sơ có cờ bảo vệ (thai sản, nghỉ ốm dài ngày, đang khiếu nại, đại diện người lao động): dừng luồng, pháp chế xử lý theo quy định lao động áp dụng.
+- **7b.** Phát hiện lệch bất thường theo nhóm: trả về bước 2 để xem lại tiêu chí.
+- **8a.** CHRO yêu cầu tìm thêm phương án: trả hồ sơ về bước 3 kèm ghi chú.
+- **10a.** Trong thời gian báo trước xuất hiện vị trí nội bộ phù hợp: HRBP có thể mở lại bước 3 nếu nhân viên đồng ý.
+
+**Quy tắc nghiệp vụ**
+
+- AI không chọn, không chấm điểm và không xếp hạng ai nên bị cắt giảm. AI chỉ tìm phương án bố trí và soạn hồ sơ.
+- Bố trí lại và học bù luôn được xét trước cắt giảm.
+- Không dùng tuổi, giới tính, lương, tình trạng sức khỏe, thai sản, nghỉ ốm làm tiêu chí ở bất kỳ bước nào.
+- Kết quả "không có phương án" ở UC-13 chỉ là dữ liệu đầu vào cho người rà soát, không tự động dẫn tới cắt giảm.
+- Việc có dùng xếp loại hiệu suất làm tiêu chí hay không do HR và pháp chế chốt; đề xuất ban đầu là không dùng.
+- Thông báo cắt giảm do con người thực hiện trực tiếp; hệ thống không gửi thông báo tự động.
+- Thời hạn báo trước, trợ cấp và thủ tục tuân theo quy định lao động áp dụng cho từng pháp nhân.
+
+**Phân vai AI và rules**
+
+- AI: xếp hạng phương án nội bộ, đề xuất học bù, soạn hồ sơ rà soát, tóm tắt tiến độ cho HRBP.
+- Rules/workflow: danh sách vị trí bị ảnh hưởng, cờ bảo vệ, thứ tự bước, phê duyệt, lưu vết.
+
+**Điểm con người quyết định:** nhân viên đồng ý phương án điều chuyển; pháp chế rà soát; BU Head đề xuất; CHRO phê duyệt cắt giảm.
+
+**Chỉ số đo:** tỷ lệ người bị ảnh hưởng được bố trí lại (redeployment rate); thời gian từ quyết định thu hẹp đến khi mỗi người có kết quả; tỷ lệ khiếu nại sau quyết định; tỷ lệ người điều chuyển còn làm việc sau N tháng.

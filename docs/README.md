@@ -19,7 +19,7 @@ docs/
 
 | Mục tiêu | Ý nghĩa |
 |---|---|
-| Empower Employees | Giúp nhân viên tự giải quyết nhu cầu, thực hiện công việc, tiếp cận tri thức, phát triển kỹ năng và nâng cao năng suất, lộ trình sự nghiệp; giảm thao tác thủ công và phụ thuộc vào HR. |
+| Empower Employees | Giúp nhân viên tự giải quyết nhu cầu, thực hiện công việc, tiếp cận tri thức,tài liệu công ty, phát triển kỹ năng và nâng cao năng suất, lộ trình sự nghiệp; giảm thao tác thủ công và phụ thuộc vào HR. |
 | Augment HR & Management | Hỗ trợ HR, Manager và lãnh đạo quản trị nguồn nhân lực, phân tích dữ liệu, ra quyết định, chuẩn hóa quy trình và giảm tải vận hành |
 | Automate Workflows | Chuẩn hóa và tự động hóa quy trình xuyên phòng ban |
 | Optimize Workforce | Khai thác kỹ năng nội bộ, điều chuyển linh hoạt, giữ chân nhân tài |
@@ -29,7 +29,7 @@ Chi tiết: [AI_Workforce_Ecosystem.md](01-overview/AI_Workforce_Ecosystem.md)
 
 ## 2. Product mindmap
 
-9 feature chính; mỗi nhánh gồm thành phần AI và điểm con người quyết định.
+10 feature chính; mỗi nhánh gồm thành phần AI và điểm con người quyết định.
 
 ![Product mindmap](02-product-mindmap/Product_Mindmap.png)
 
@@ -41,7 +41,7 @@ Chi tiết: [AI_Workforce_Ecosystem.md](01-overview/AI_Workforce_Ecosystem.md)
 
 ## 3. Use case
 
-15 use case, chia 3 nhóm: **A. Nhân viên** (UC-01 đến 05), **B. Quản lý nhân sự** (UC-06 đến 10), **C. Điều phối và kết nối** (UC-11 đến 15). Quản lý trực tiếp cũng là nhân viên nên làm được mọi việc của nhân viên.
+16 use case, chia 3 nhóm: **A. Nhân viên** (UC-01 đến 05), **B. Quản lý nhân sự** (UC-06 đến 10), **C. Điều phối và kết nối** (UC-11 đến 16). Quản lý trực tiếp cũng là nhân viên nên làm được mọi việc của nhân viên.
 
 ```mermaid
 flowchart LR
@@ -52,6 +52,7 @@ flowchart LR
     subgraph SYS["AI Workforce Ecosystem"]
         subgraph GC["C. Điều phối và kết nối"]
             UC15(["UC-15 Nghỉ việc và bàn giao"])
+            UC16(["UC-16 Thu hẹp đơn vị,<br/>cắt giảm nhân sự"])
             UC13(["UC-13 Bố trí nhân sự cho dự án"])
             UC14(["UC-14 Chuẩn bị họp 1-1"])
             UC12(["UC-12 Xây dựng hồ sơ kỹ năng"])
@@ -90,6 +91,7 @@ flowchart LR
 
     UC15 === OPS
     UC09 === OPS
+    UC16 === HRBP
     UC13 === HRBP
     UC10 === HRBP
     UC06 === HRBP
@@ -113,9 +115,10 @@ flowchart LR
 | UC-13 | Bố trí nhân sự cho dự án | HR phụ trách khối | Quản lý dự án, trưởng khối, nhân viên | AI gợi ý người phù hợp → nhân viên đồng ý → trưởng khối duyệt |
 | UC-14 | Chuẩn bị họp 1-1 | Quản lý trực tiếp | Nhân viên | AI tóm tắt tình hình, gợi ý chủ đề → họp → theo dõi việc cần làm |
 | UC-15 | Nghỉ việc và bàn giao | HR vận hành | Nhân viên nghỉ việc, IT, Tài chính | Tạo checklist → bàn giao công việc → thu hồi tài sản, quyền → quyết toán |
+| UC-16 | Thu hẹp đơn vị, cắt giảm nhân sự | HR phụ trách khối | Trưởng khối, Giám đốc nhân sự, pháp chế, nhân viên | Lập danh sách bị ảnh hưởng → AI tìm vị trí nội bộ, học bù → hết phương án thì pháp chế rà soát → Giám đốc nhân sự duyệt → nghỉ việc và bàn giao |
 
 | File | Nội dung |
 |---|---|
-| [UC_01_Catalog.md](03-use-cases/UC_01_Catalog.md) | Bảng 15 use case, actor, phân vai AI/rules/người |
+| [UC_01_Catalog.md](03-use-cases/UC_01_Catalog.md) | Bảng 16 use case, actor, phân vai AI/rules/người |
 | [UC_02_Diagrams.md](03-use-cases/UC_02_Diagrams.md) | Sơ đồ theo từng nhóm và quan hệ include/extend |
 | [UC_03_Specifications.md](03-use-cases/UC_03_Specifications.md) | Đặc tả chi tiết từng use case |

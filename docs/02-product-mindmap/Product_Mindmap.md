@@ -62,3 +62,10 @@
 - **[AI] Xếp hạng phương án kèm bằng chứng**
 - **[AI] Đề xuất reskill khi khớp một phần**
 - Nhân viên đồng ý, BU Head duyệt
+
+## Restructuring & Transition
+
+- Danh sách bị ảnh hưởng theo tiêu chí đã duyệt
+- [AI] Tìm phương án nội bộ, học bù cho từng người
+- [AI] Soạn hồ sơ rà soát khi hết phương án
+- Pháp chế rà soát, lãnh đạo quyết định
