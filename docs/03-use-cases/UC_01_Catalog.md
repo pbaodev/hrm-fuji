@@ -1,6 +1,6 @@
 # Bảng use case tổng hợp
 
-Tài liệu này liệt kê 15 use case của AI Workforce Ecosystem, mỗi feature trong [AI_Workforce_Ecosystem.md](AI_Workforce_Ecosystem.md) có một use case đại diện. Sơ đồ nằm ở [UC_02_Diagrams.md](UC_02_Diagrams.md), đặc tả chi tiết nằm ở [UC_03_Specifications.md](UC_03_Specifications.md).
+Tài liệu này liệt kê 15 use case của AI Workforce Ecosystem, mỗi feature trong [AI_Workforce_Ecosystem.md](../01-overview/AI_Workforce_Ecosystem.md) có một use case đại diện. Sơ đồ nằm ở [UC_02_Diagrams.md](UC_02_Diagrams.md), đặc tả chi tiết nằm ở [UC_03_Specifications.md](UC_03_Specifications.md).
 
 Quy ước dùng trong cả ba tài liệu:
 

@@ -1,6 +1,6 @@
 # Đặc tả use case
 
-Tài liệu này đặc tả 15 use case trong [UC_01_Catalog.md](UC_01_Catalog.md), mỗi feature của [AI_Workforce_Ecosystem.md](AI_Workforce_Ecosystem.md) một use case. Sơ đồ nằm ở [UC_02_Diagrams.md](UC_02_Diagrams.md).
+Tài liệu này đặc tả 15 use case trong [UC_01_Catalog.md](UC_01_Catalog.md), mỗi feature của [AI_Workforce_Ecosystem.md](../01-overview/AI_Workforce_Ecosystem.md) một use case. Sơ đồ nằm ở [UC_02_Diagrams.md](UC_02_Diagrams.md).
 
 Cách đọc:
 
