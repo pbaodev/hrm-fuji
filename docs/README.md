@@ -13,7 +13,8 @@ docs/
 
 ## 1. Overview
 
-**Bối cảnh** một tập đoàn IT lớn, nhiều khối kinh doanh, liên tục mở rộng và tái cấu trúc : dự án, nhân lực kém hiểu quả cắt bỏ nhanh.bài toán đặt ra hệ thống AI hỗ trợ toàn bộ vòng đời của nhân sự, từ tuyển dụng, làm việc, đào tạo, phát triển, luân chuyển cho đến nghỉ việc.
+**Bối cảnh** tập đoàn IT lớn liên tục mở rộng và tái cấu trúc : dự án, nhân lực kém hiểu quả cắt bỏ nhanh.bài toán bọn em đưa ra để phân tích các use case là tạo hệ thống AI hỗ trợ toàn bộ vòng đời của nhân sự làm việc, đào tạo, phát triển, luân chuyển cho đến nghỉ việc.
+
 
 **Bài toán:** xây dựng AI-powered Workforce Ecosystem giúp nhân viên làm việc hiệu quả hơn, đồng thời hỗ trợ HR và lãnh đạo quản trị, phân bổ và tối ưu nguồn nhân lực toàn tập đoàn.
 
