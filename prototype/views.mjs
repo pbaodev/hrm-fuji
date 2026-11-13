@@ -1,4 +1,4 @@
-import { roles, nav, people, jobs, candidates, workforce, canAccess, scopeRequests } from './data.mjs';
+import { roles, nav, people, jobs, candidates, workforce, canAccess, scopeRequests, affected } from './data.mjs';
 import { pendingStage, reservedLeave } from './model.mjs';
 import { icon, esc, avatar, badge, statusBadge, button, link, empty, aiNote, pageHead, kindTag } from './ui.mjs';
 import { flows } from './tour.mjs';
@@ -118,7 +118,19 @@ export function attendance(s,v) {
   <section class="card"><div class="table-toolbar"><div class="filter-tabs">${[['all','Tất cả'],['pending','Cần xử lý'],['done','Đã duyệt']].map(([id,t])=>button(t,'filter',id,`tab ${v.filter===id?'active':''}`)).join('')}</div><span class="subtle">Mọi điều chỉnh cần HR vận hành xác nhận</span></div><div class="table-wrap"><table><thead><tr><th>Nhân viên</th><th>Ngày công</th><th>Bất thường</th><th>Bằng chứng</th><th>Trạng thái</th><th></th></tr></thead><tbody>${rows.map(r=>`<tr><td>${personCell(r)}</td><td>${r.date}</td><td>${r.issue}<small>${r.id}</small></td><td>${badge(r.evidence?'Đã có xác nhận':'Chờ quản lý',r.evidence?'green':'amber')}</td><td>${statusBadge(r.status)}</td><td>${button('Kiểm tra','attendance-row',r.id,'btn small')}</td></tr>`).join('')}</tbody></table></div>${!rows.length?empty('Đã xử lý hết','Không còn bản ghi ở trạng thái này.'):''}</section><div class="lower-section">${aiNote('Thiếu chấm công và OT chưa duyệt được phát hiện bằng quy tắc. Phần giải thích nguyên nhân là gợi ý mẫu; dữ liệu công chỉ thay đổi sau bước duyệt của HR vận hành.')}</div><section class="card lower-section">${cardHead('Chuẩn bị dữ liệu trước chốt lương','Prototype tập trung làm sạch công/OT, chưa tính lương')}<div class="checklist-inline"><span>${icon('check',18)} Đồng bộ lịch ca mẫu</span><span>${icon('clock',18)} Xử lý ${s.attendance.filter(x=>x.status==='pending').length} bất thường</span><span>${icon('lock',18)} HR vận hành duyệt điều chỉnh</span></div></section>`;
 }
 
+export function restructure(s, v) {
+  const rows = affected.map(p => ({ ...p, ...s.restructure.find(x => x.id === p.id) }));
+  const count = (...st) => rows.filter(r => st.includes(r.status)).length;
+  const optionBadge = p => p.option === 'full' ? badge('Có vị trí phù hợp','green') : p.option === 'partial' ? badge('Khớp một phần','blue') : badge('Chưa có phương án','amber');
+  return `${pageHead('HR ECOSYSTEM','Thu hẹp đơn vị, giữ người phù hợp','Bố trí lại trước. Cắt giảm là phương án cuối và do con người quyết định.',badge('Bố trí lại trước','red'))}
+  <div class="project-banner"><span class="project-monogram">O<span>↘</span></span><div><div class="eyebrow">QUYẾT ĐỊNH ĐÃ PHÊ DUYỆT · RST-004</div><h2>Project Orion thu hẹp</h2><p>Sản phẩm ngừng phát triển · Digital Products</p></div><div class="project-meta"><strong>${rows.length} vị trí bị ảnh hưởng</strong><span>Hiệu lực 31/12/2026</span><span>Danh sách lập theo vị trí, không theo cá nhân</span></div></div>
+  ${metrics([['Bị ảnh hưởng',two(rows.length),'Theo tiêu chí đã duyệt','users'],['Đã có hướng nội bộ',two(count('redeployed','reskill')),'Điều chuyển hoặc học bù','check'],['Chờ xử lý',two(count('open','review')),'Cần HR hoặc Trưởng khối','clock','red'],['Cắt giảm đã duyệt',two(count('approved','exit')),'Sau rà soát của pháp chế','logout']])}
+  <div class="talent-grid">${rows.map(p=>`<article class="card talent-card"><div class="talent-top">${avatar(p.initials,p.color,true)}${p.option==='none'?optionBadge(p):`<span class="match-score"><strong>${p.match}<small>%</small></strong><span>khớp kỹ năng</span></span>`}</div><h3>${p.name}</h3><p>${p.role}</p><span class="subtle">${p.tenure}</span>${tags(p.skills)}<div class="evidence-snippet">${icon('spark',16)}<span>${p.target?`<strong>${p.target}.</strong> `:''}${p.finding}</span></div><div class="skill-gap"><span>Trạng thái</span><p>${statusBadge(p.status)}</p></div>${button(`Xem hồ sơ ${icon('arrow',16)}`,'rs-person',p.id,'btn full-width')}</article>`).join('')}</div>
+  ${aiNote('AI chỉ tìm vị trí nội bộ, đề xuất học bù và soạn hồ sơ rà soát. AI không chọn và không xếp hạng ai bị cắt giảm. Tuổi, giới tính, lương, thai sản, nghỉ ốm không được dùng làm tiêu chí. Dữ liệu trên màn hình là giả lập.')}`;
+}
+const two = n => String(n).padStart(2, '0');
+
 // Dải chú thích luồng: bước nào do AI, quy tắc hay con người đảm nhận.
 const flowStrip = id => flows[id] ? `<section class="flow-strip" aria-label="Luồng xử lý và phần việc của AI"><span class="eyebrow">LUỒNG · ${flows[id].uc}</span><ol>${flows[id].steps.map(([kind,text]) => `<li>${kindTag(kind)}<span>${text}</span></li>`).join('')}</ol></section>` : '';
-const screens = { overview, assistant, learning, workforce: workforceView, recruitment, performance, attendance, workflows, skills, staffing };
+const screens = { overview, assistant, learning, workforce: workforceView, recruitment, performance, attendance, workflows, skills, staffing, restructure };
 export const views = Object.fromEntries(Object.entries(screens).map(([id, fn]) => [id, (s, v) => fn(s, v).replace('<!--flow-->', flowStrip(id))]));

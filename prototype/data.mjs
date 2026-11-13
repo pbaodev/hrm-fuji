@@ -17,7 +17,8 @@ export const nav = [
   { id: 'attendance', label: 'Công & tiền lương', icon: 'calendar', uc: 'UC-09' },
   { id: 'workflows', label: 'Điều phối quy trình', icon: 'flow', group: 'HR ECOSYSTEM', uc: 'UC-11 · 15' },
   { id: 'skills', label: 'Bản đồ kỹ năng', icon: 'nodes', uc: 'UC-12' },
-  { id: 'staffing', label: 'Bố trí nhân sự', icon: 'users', uc: 'UC-13' }
+  { id: 'staffing', label: 'Bố trí nhân sự', icon: 'users', uc: 'UC-13' },
+  { id: 'restructure', label: 'Thu hẹp đơn vị', icon: 'shield', uc: 'UC-16' }
 ];
 export const people = [
   { id: 'EMP-028', name: 'Trần Hoàng Nam', initials: 'HN', role: 'Senior Backend Engineer', unit: 'Digital Products', skills: ['Java', 'Spring Boot', 'AWS'], match: 94, available: true, capacity: 100, start: '01/12/2026', color: 'peach', evidence: 'Payment Gateway · 18 tháng; xác nhận bởi Lê Thanh Hà', gap: 'Cần bổ sung Kafka nâng cao', experience: '6 năm kinh nghiệm' },
@@ -35,6 +36,12 @@ export const candidates = [
   { id: 'CV-101', name: 'Bùi Gia Khánh', initials: 'GK', score: 92, role: 'Senior Backend Engineer', years: '6 năm', source: 'CV mẫu · trang 2, dự án Payment Hub', detail: 'Java 5 năm, Spring Boot 4 năm; xây dựng hệ thống xử lý 2 triệu giao dịch/ngày. AWS cần xác minh chứng chỉ.', tags: ['Java', 'Spring Boot', 'Microservices'], color: 'blue' },
   { id: 'CV-102', name: 'Ngô Phương Thảo', initials: 'PT', score: 88, role: 'Backend Engineer', years: '5 năm', source: 'CV mẫu · trang 1, dự án Commerce Core', detail: 'Java 4 năm, thiết kế REST API, triển khai AWS ECS; chưa có bằng chứng vận hành Kafka.', tags: ['Java', 'AWS', 'REST API'], color: 'lilac' },
   { id: 'CV-103', name: 'Đinh Việt Long', initials: 'VL', score: 76, role: 'Software Engineer', years: '4 năm', source: 'CV mẫu · trang 2, dự án Logistics', detail: 'Java 3 năm, PostgreSQL; cần hỏi thêm về Spring Boot và kiến trúc phân tán.', tags: ['Java', 'SQL', 'Docker'], color: 'mint' }
+];
+// UC-16: nhân sự bị ảnh hưởng khi Project Orion thu hẹp. option = kết quả AI tìm phương án nội bộ.
+export const affected = [
+  { id: 'RS-1', name: 'Vũ Đức Anh', initials: 'ĐA', color: 'mint', role: 'Backend Engineer', tenure: '3 năm tại Orion', skills: ['Java', 'Docker', 'CI/CD'], option: 'full', match: 86, target: 'Platform Engineer · Cloud Foundation', finding: 'Khớp 86% với vị trí đang mở, sẵn sàng từ 01/01/2027.', evidence: 'Orion Pipeline · 14 tháng; kỹ năng Docker, CI/CD đã được quản lý xác thực.' },
+  { id: 'RS-2', name: 'Trần Thu Hà', initials: 'TH', color: 'lilac', role: 'QA Engineer', tenure: '2 năm tại Orion', skills: ['Manual Testing', 'SQL', 'API Testing'], option: 'partial', match: 64, target: 'Automation QA · Enterprise Solutions', finding: 'Khớp 64%. Thiếu kỹ năng viết kiểm thử tự động; lộ trình học bù 6 tuần.', evidence: 'Orion QA · 20 tháng; SQL và API Testing đã xác thực. Chưa có bằng chứng về automation.' },
+  { id: 'RS-3', name: 'Lý Minh Khôi', initials: 'MK', color: 'sand', role: 'Flash Developer', tenure: '5 năm tại Orion', skills: ['ActionScript', 'Flash', 'Animation'], option: 'none', match: 0, target: '', finding: 'Chưa tìm thấy vị trí nội bộ khả thi sau khi đối chiếu 48 nhu cầu đang mở.', evidence: 'Đã thử 3 hướng: Frontend (khớp 31%, cần học bù trên 6 tháng), Motion Design (không có nhu cầu mở), Technical Support (nhân viên không chọn).' }
 ];
 export const workforce = [
   { name: 'Digital Products', count: 486, demand: 510, ot: 18.4, engagement: 78, turnover: 2.1, color: '#ea0029' },
@@ -59,6 +66,7 @@ export const initial = {
     { id: 'sk-5', name: 'System Design', level: 3, status: 'pending', evidenceType: 'Đã học', source: 'LMS · chứng nhận hoàn thành 04/11', date: '12/11/2026', verifier: '' }
   ],
   staffing: null,
+  restructure: affected.map(p => ({ id: p.id, status: 'open' })),
   attendance: [
     { id: 'AT-031', name: 'Nguyễn Ngọc Linh', initials: 'NL', unit: 'Enterprise Solutions', date: '10/11/2026', issue: 'Thiếu check-out', severity: 'medium', evidence: 'Quản lý xác nhận 18:05; log ra văn phòng 18:08', proposal: 'Bổ sung giờ ra 18:05', status: 'pending' },
     { id: 'AT-032', name: 'Phạm Quang Huy', initials: 'QH', unit: 'Cloud & Infrastructure', date: '11/11/2026', issue: 'OT chưa được duyệt', severity: 'high', evidence: '', proposal: 'Cần quản lý xác nhận 2 giờ OT', status: 'pending' },
@@ -76,12 +84,12 @@ export const initial = {
 
 // Phân quyền màn hình theo vai trò. Mục đầu tiên là trang chủ của vai trò đó.
 export const access = {
-  hrbp: ['overview', 'workforce', 'workflows', 'skills', 'staffing'],
+  hrbp: ['overview', 'workforce', 'workflows', 'skills', 'staffing', 'restructure'],
   employee: ['overview', 'assistant', 'learning', 'workflows', 'skills', 'staffing'],
   manager: ['overview', 'assistant', 'learning', 'performance', 'attendance', 'workflows', 'skills', 'staffing'],
   recruiter: ['overview', 'assistant', 'recruitment'],
-  ops: ['overview', 'attendance', 'workflows'],
-  bu: ['overview', 'workforce', 'staffing'],
+  ops: ['overview', 'attendance', 'workflows', 'restructure'],
+  bu: ['overview', 'workforce', 'staffing', 'restructure'],
   candidate: ['assistant']
 };
 export const canAccess = (role, route) => !!access[role]?.includes(route);

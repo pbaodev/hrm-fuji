@@ -1,6 +1,6 @@
 # Bảng use case tổng hợp
 
-Tài liệu này liệt kê 15 use case của AI Workforce Ecosystem, mỗi feature trong [AI_Workforce_Ecosystem.md](../01-overview/AI_Workforce_Ecosystem.md) có một use case đại diện. Sơ đồ nằm ở [UC_02_Diagrams.md](UC_02_Diagrams.md), đặc tả chi tiết nằm ở [UC_03_Specifications.md](UC_03_Specifications.md).
+Tài liệu này liệt kê 16 use case của AI Workforce Ecosystem. UC-01 đến UC-15 ứng với 15 feature gốc; UC-16 (thu hẹp đơn vị, layoff) được bổ sung sau để lấp khoảng trống giữa UC-13 và UC-15. Mỗi feature trong [AI_Workforce_Ecosystem.md](../01-overview/AI_Workforce_Ecosystem.md) có một use case đại diện. Sơ đồ nằm ở [UC_02_Diagrams.md](UC_02_Diagrams.md), đặc tả chi tiết nằm ở [UC_03_Specifications.md](UC_03_Specifications.md).
 
 Quy ước dùng trong cả ba tài liệu:
 
@@ -27,6 +27,7 @@ Quy ước dùng trong cả ba tài liệu:
 | UC-13 | Đề xuất phương án bố trí nhân sự cho một nhu cầu dự án | 13. Project Staffing & Redeployment Agent | HRBP | Project Manager, Line Manager, BU Head, Employee | Phương án được duyệt và thực hiện, hoặc kết luận chưa có phương án nội bộ |
 | UC-14 | Chuẩn bị buổi 1:1 với thành viên nhóm | 14. Manager Team Operations Copilot | Line Manager | Employee | Bản chuẩn bị 1:1 và action items được theo dõi |
 | UC-15 | Điều phối offboarding và bàn giao tri thức | 15. Offboarding & Knowledge Continuity Agent | HR Ops | Employee nghỉ việc, Line Manager, IT, Finance | Tri thức được bàn giao, tài sản và quyền truy cập được thu hồi đúng hạn |
+| UC-16 | Xử lý nhân sự bị ảnh hưởng khi thu hẹp đơn vị | 16. Restructuring & Transition Agent (bổ sung) | HRBP | BU Head, CHRO, pháp chế, Line Manager, Employee, HR Ops | Mỗi người bị ảnh hưởng có phương án nội bộ, hoặc có quyết định cắt giảm đã qua rà soát và phê duyệt |
 
 ## 2. Phân vai giữa AI, rules và con người
 
@@ -49,6 +50,7 @@ Bảng này áp dụng nguyên tắc ở mục 9 của tài liệu gốc: AI dù
 | UC-13 | Hồ sơ kỹ năng, PM, HRIS | Xếp hạng phương án, giải thích | Ràng buộc cứng, phê duyệt, cập nhật | Project Manager, nhân viên, BU Head |
 | UC-14 | PM, Attendance, HRIS, lịch | Tóm tắt, gợi ý chủ đề, trích action items | Quyền xem, nhắc hạn | Line Manager |
 | UC-15 | HRIS, IAM, ITSM, Payroll | Lập danh sách bàn giao, soạn khung tài liệu | Checklist, thu hồi quyền, quyết toán | HR Ops; Line Manager |
+| UC-16 | HRIS, PM, hồ sơ kỹ năng, workflow engine | Tìm phương án nội bộ, đề xuất học bù, soạn hồ sơ rà soát | Danh sách bị ảnh hưởng theo tiêu chí đã duyệt, thứ tự bước, lưu vết | BU Head đề xuất; CHRO phê duyệt; pháp chế rà soát |
 
 ## 3. Phụ thuộc, ưu tiên và phần chưa đặc tả
 
@@ -68,6 +70,7 @@ Cột "Ưu tiên" là đề xuất, chưa được chốt. Cột cuối liệt k
 | UC-10 | Dữ liệu tổng hợp nhiều nguồn | Sau khi có nền dữ liệu | Cảnh báo sớm theo ngưỡng; báo cáo toàn tập đoàn cho CHRO |
 | UC-11 | Không có | Pilot | Tạo quy trình mới từ mô tả; theo dõi trạng thái yêu cầu |
 | UC-12 | Danh mục kỹ năng chuẩn | Pilot | Tìm người theo kỹ năng; matching với mentor |
-| UC-13 | UC-12, UC-11, dữ liệu phân bổ dự án | Pilot | Xử lý nhân sự bị ảnh hưởng khi thu hẹp; phát hiện skill gap cấp dự án |
+| UC-13 | UC-12, UC-11, dữ liệu phân bổ dự án | Pilot | Phát hiện skill gap cấp dự án (phần thu hẹp đã tách thành UC-16) |
 | UC-14 | Không có | Sau pilot | Tổng hợp workload cả đội; theo dõi onboarding thành viên mới |
 | UC-15 | UC-11 | Sau pilot | Exit interview; quản lý mạng lưới alumni |
+| UC-16 | UC-13, UC-04, UC-15, UC-11 | Sau khi UC-13 chạy ổn; cần pháp chế duyệt quy trình trước | Tính gói hỗ trợ thôi việc; hỗ trợ tìm việc bên ngoài; truyền thông nội bộ |

@@ -11,12 +11,14 @@ export const flows = {
   attendance: { uc: 'UC-09', steps: [['rule','Phát hiện sai lệch công'],['ai','Giải thích nguyên nhân, đề xuất sửa'],['human','Quản lý xác nhận'],['human','HR vận hành duyệt']] },
   workflows: { uc: 'UC-11 · 15', steps: [['ai','Phân loại yêu cầu'],['rule','Giao người, đặt hạn'],['human','Từng người duyệt bước của mình'],['rule','Ghi lịch sử, hoàn tất']] },
   skills: { uc: 'UC-12', steps: [['ai','Rút kỹ năng từ CV, dự án'],['human','Nhân viên xác nhận'],['human','Quản lý xác thực'],['rule','Lưu kèm bằng chứng']] },
+  restructure: { uc: 'UC-16', steps: [['rule','Lập danh sách bị ảnh hưởng'],['ai','Tìm vị trí nội bộ, học bù'],['human','Nhân viên đồng ý'],['ai','Soạn hồ sơ rà soát'],['human','Pháp chế rà soát'],['human','Trưởng khối duyệt']] },
   staffing: { uc: 'UC-13', steps: [['rule','Lọc theo lịch, tỷ lệ phân bổ'],['ai','Xếp hạng kèm bằng chứng'],['human','Nhân viên đồng ý'],['human','Quản lý nhả người'],['human','Trưởng khối duyệt']] }
 };
 
 const skill = (s, id) => s.skills.find(x => x.id === id);
 const leave = s => s.requests.find(r => r.category === 'leave');
 const att = (s, id) => s.attendance.find(x => x.id === id);
+const rs = (s, id) => s.restructure.find(x => x.id === id);
 
 // Kịch bản demo end-to-end. done(state, view) = điều kiện để tự chuyển sang bước sau.
 export const scenarios = [
@@ -50,5 +52,12 @@ export const scenarios = [
     { role: 'manager', route: 'workflows', kind: 'human', text: 'Bấm “Mở checklist bàn giao” và xác nhận mục “Người nhận xác nhận tài liệu bàn giao”.', note: 'Trong thiết kế, AI lập danh sách hạng mục cần bàn giao; prototype dùng checklist mẫu.', target: '[data-action="offboarding"]', done: s => s.offboarding.items.find(i => i.id === 'off-2').done },
     { role: 'ops', route: 'workflows', kind: 'rule', text: 'Mở checklist và xác nhận 3 mục còn lại: thu hồi laptop, thu hồi quyền, quyết toán.', note: 'Quy trình thu hồi quyền chạy theo lịch, không phụ thuộc tiến độ bàn giao.', target: '[data-action="offboarding"]', done: s => s.offboarding.items.every(i => i.done) },
     { role: 'ops', route: 'workflows', kind: 'human', text: 'Mở checklist và bấm “Đóng hồ sơ bàn giao”.', note: 'HR vận hành kiểm tra đủ hạng mục rồi mới đóng hồ sơ.', target: '[data-action="offboarding"]', done: s => s.offboarding.closed }
+  ] },
+  { id: 'restructure', title: 'Thu hẹp đơn vị, cắt giảm nhân sự', uc: 'UC-16 · 13 · 15', desc: 'Bố trí lại trước; cắt giảm chỉ sau rà soát và phê duyệt.', steps: [
+    { role: 'hrbp', route: 'restructure', kind: 'ai', text: 'Mở hồ sơ Vũ Đức Anh và bấm “Ghi nhận nhân viên đồng ý điều chuyển”.', note: 'Quy tắc lập danh sách theo vị trí bị thu hẹp. AI tìm vị trí nội bộ phù hợp cho từng người.', target: '[data-action="rs-person"][data-id="RS-1"]', done: s => rs(s,'RS-1').status !== 'open' },
+    { role: 'hrbp', route: 'restructure', kind: 'ai', text: 'Mở hồ sơ Trần Thu Hà và bấm “Xác nhận lộ trình học bù”.', note: 'Khi chỉ khớp một phần, AI đề xuất lộ trình học bù thay vì loại phương án.', target: '[data-action="rs-person"][data-id="RS-2"]', done: s => rs(s,'RS-2').status !== 'open' },
+    { role: 'hrbp', route: 'restructure', kind: 'human', text: 'Mở hồ sơ Lý Minh Khôi, đọc hồ sơ rà soát, đánh dấu đã rà soát cùng pháp chế rồi gửi Trưởng khối.', note: 'AI chỉ soạn hồ sơ: phương án đã thử, quyền lợi, điểm pháp chế cần xem. AI không chọn ai bị cắt giảm.', target: '[data-action="rs-person"][data-id="RS-3"]', done: s => rs(s,'RS-3').status !== 'open' },
+    { role: 'bu', route: 'restructure', kind: 'human', text: 'Mở hồ sơ Lý Minh Khôi và phê duyệt (hoặc trả lại để tìm thêm phương án).', note: 'Chỉ duyệt được khi những người còn lại đã có hướng nội bộ. Quyết định thuộc về con người.', target: '[data-action="rs-person"][data-id="RS-3"]', done: s => ['approved','exit'].includes(rs(s,'RS-3').status) },
+    { role: 'ops', route: 'restructure', kind: 'rule', text: 'Mở hồ sơ Lý Minh Khôi và bấm “Khởi chạy nghỉ việc và bàn giao”.', note: 'Quy trình nghỉ việc (UC-15) chỉ chạy sau khi có phê duyệt; thông báo cho nhân viên do con người thực hiện.', target: '[data-action="rs-person"][data-id="RS-3"]', done: s => rs(s,'RS-3').status === 'exit' }
   ] }
 ];

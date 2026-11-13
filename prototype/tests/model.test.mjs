@@ -78,3 +78,19 @@ test('saved-state version and shape checks reject incompatible fixtures', () => 
   const s = transition(freshState(), { type: 'interest', role: 'employee', id: 'job-1' });
   assert.deepEqual(restoreState(JSON.stringify(s)), s);
 });
+
+test('restructuring redeploys first; layoff needs legal review, approval, then offboarding', () => {
+  const s0 = freshState();
+  assert.throws(() => transition(s0, { type: 'rs-review', role: 'hrbp', id: 'RS-1', checked: 'on' }), /không còn phương án/);
+  assert.throws(() => transition(s0, { type: 'rs-review', role: 'hrbp', id: 'RS-3' }), /pháp chế/);
+  const reviewed = transition(s0, { type: 'rs-review', role: 'hrbp', id: 'RS-3', checked: 'on' });
+  assert.throws(() => transition(reviewed, { type: 'rs-approve', role: 'hrbp', id: 'RS-3' }));
+  assert.throws(() => transition(reviewed, { type: 'rs-approve', role: 'bu', id: 'RS-3' }), /những người còn lại/);
+  const placed = transition(transition(reviewed, { type: 'rs-redeploy', role: 'hrbp', id: 'RS-1' }), { type: 'rs-reskill', role: 'hrbp', id: 'RS-2' });
+  assert.throws(() => transition(placed, { type: 'rs-exit', role: 'ops', id: 'RS-3' }), /phê duyệt/);
+  const approved = transition(placed, { type: 'rs-approve', role: 'bu', id: 'RS-3' });
+  const done = transition(approved, { type: 'rs-exit', role: 'ops', id: 'RS-3' });
+  assert.deepEqual(done.restructure.map(x => x.status), ['redeployed', 'reskill', 'exit']);
+  const returned = transition(reviewed, { type: 'rs-return', role: 'bu', id: 'RS-3', reason: 'Xem thêm khối khác' });
+  assert.equal(returned.restructure[2].status, 'open');
+});

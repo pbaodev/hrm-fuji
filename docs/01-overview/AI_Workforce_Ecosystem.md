@@ -132,6 +132,7 @@ mindmap
       Project Staffing & Redeployment Agent
       Manager Team Operations Copilot
       Offboarding & Knowledge Continuity Agent
+      Restructuring & Transition Agent
 ```
 
 ### Định hướng sản phẩm
@@ -236,6 +237,11 @@ mindmap
   Knowledge Continuity    IT                      nghỉ việc, bàn giao tri
   Agent                                           thức, thu hồi tài sản
                                                   và quyền truy cập
+
+  16\. AI Restructuring & HRBP, BU Head, CHRO,    Khi đơn vị thu hẹp: tìm
+  Transition Agent        pháp chế                phương án nội bộ, học
+  (bổ sung)                                       bù; soạn hồ sơ rà soát
+                                                  khi phải cắt giảm
   -----------------------------------------------------------------------
 
 ------------------------------------------------------------------------

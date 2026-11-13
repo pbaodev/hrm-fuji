@@ -37,7 +37,7 @@ const paths = {
 };
 export const icon = (name, size = 20) => `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths[name] || paths.grid}</svg>`;
 export const avatar = (initials, color = 'peach', large = false) => `<span class="avatar ${color} ${large ? 'large' : ''}">${esc(initials)}</span>`;
-const statuses = { pending: ['Chờ phê duyệt','amber'], active: ['Đang xử lý','blue'], done: ['Hoàn tất','green'], rejected: ['Đã từ chối','red'], verified: ['Đã xác thực','green'], suggested: ['AI đề xuất','red'], declined: ['Đã từ chối','muted'] };
+const statuses = { pending: ['Chờ phê duyệt','amber'], active: ['Đang xử lý','blue'], done: ['Hoàn tất','green'], rejected: ['Đã từ chối','red'], verified: ['Đã xác thực','green'], suggested: ['AI đề xuất','red'], declined: ['Đã từ chối','muted'], open: ['Chờ xử lý','amber'], redeployed: ['Đã điều chuyển','green'], reskill: ['Đang học bù','blue'], review: ['Chờ Trưởng khối duyệt','amber'], approved: ['Đã duyệt cắt giảm','red'], exit: ['Đang bàn giao nghỉ việc','muted'] };
 export const badge = (label, tone = 'muted') => `<span class="badge ${tone}">${esc(label)}</span>`;
 export const statusBadge = status => badge(...(statuses[status] || [status,'muted']));
 export const button = (label, action, value = '', cls = 'btn', extra = '') => `<button class="${cls}" data-action="${esc(action)}" data-id="${esc(value)}" ${extra}>${label}</button>`;

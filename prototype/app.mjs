@@ -1,4 +1,4 @@
-import { roles, nav, people, jobs, candidates, workforce, canAccess, homeOf, scopeRequests } from './data.mjs';
+import { roles, nav, people, jobs, candidates, workforce, canAccess, homeOf, scopeRequests, affected } from './data.mjs';
 import { freshState, restoreState, transition, workdays, reservedLeave, pendingStage, STORAGE_KEY } from './model.mjs';
 import { esc, icon, avatar, badge, statusBadge, button, link, aiNote, kindTag } from './ui.mjs';
 import { scenarios } from './tour.mjs';
@@ -97,6 +97,21 @@ function openModal(action,id='') {
     showDialog('Xác nhận phương án Atlas',`<div class="person-detail">${avatar(person.initials,person.color,true)}<div><h3>${person.name}</h3><p>Senior Backend Engineer → Project Atlas</p></div></div><div class="info-box">100% phân bổ · 01/12/2026–31/05/2027 · Hà Nội</div><p class="body-copy">${['Phản hồi dưới vai trò nhân viên được đề xuất. Việc tham gia cần có sự đồng ý của nhân viên.','Xác nhận kế hoạch bàn giao và ngày có thể nhả người cho dự án mới.','Các bước nhân viên đồng ý và quản lý xác nhận đã hoàn tất. Trưởng khối xem xét quyết định cuối.','Đã có đủ xác nhận. Bước này cập nhật dữ liệu phân bổ trong prototype.'][p.stage]}</p>${confirmForm({type:'staff-next'},label,role)}${p.stage===0?button('Từ chối phương án','staff-decline','','btn full-width spaced'):''}`);
   } else if(action==='staff-decline') {
     showDialog('Phản hồi phương án',confirmForm({type:'staff-decline'},'Gửi phản hồi từ chối','employee',`<label class="form-label">Lý do<textarea name="reason" required rows="3" maxlength="500" placeholder="Chia sẻ điều kiện hoặc nguyện vọng chưa phù hợp..."></textarea></label>`));
+  } else if(action==='rs-person') {
+    const p=affected.find(x=>x.id===id), row=state.restructure.find(x=>x.id===id);
+    const steps={
+      open: p.option==='full' ? `${aiNote('AI tìm thấy vị trí phù hợp. Chỉ ghi nhận sau khi HR đã trao đổi trực tiếp và nhân viên đồng ý.')}${confirmForm({type:'rs-redeploy',id},'Ghi nhận nhân viên đồng ý điều chuyển','hrbp')}`
+        : p.option==='partial' ? `${aiNote('AI đề xuất lộ trình học bù 6 tuần. Nhân viên giữ vị trí hiện tại trong thời gian học.')}${confirmForm({type:'rs-reskill',id},'Xác nhận lộ trình học bù','hrbp')}`
+        : `<div class="evidence-panel"><span class="eyebrow">HỒ SƠ RÀ SOÁT · AI SOẠN NHÁP</span><p><strong>Phương án đã thử:</strong> ${p.evidence}</p><p><strong>Quyền lợi theo chính sách mẫu:</strong> báo trước 45 ngày, trợ cấp thôi việc, hỗ trợ tìm việc 3 tháng.</p><p><strong>Điểm pháp chế cần xem:</strong> không có cờ bảo vệ (thai sản, nghỉ ốm dài ngày, đang khiếu nại).</p></div>${row.returned?`<div class="info-box">Trưởng khối đã trả lại: ${esc(row.returned)}</div>`:''}${aiNote('AI chỉ soạn hồ sơ. Quyết định cắt giảm thuộc về người có thẩm quyền.')}${confirmForm({type:'rs-review',id},'Gửi Trưởng khối xem xét','hrbp',`<label class="check-line"><input type="checkbox" name="checked" required> Tôi đã rà soát hồ sơ này cùng pháp chế</label>`)}`,
+      review: `<div class="info-box">HR phụ trách khối và pháp chế đã rà soát. Chỉ phê duyệt được khi những người còn lại đã có hướng xử lý nội bộ.</div>${confirmForm({type:'rs-approve',id},'Phê duyệt phương án cắt giảm','bu')}${button('Trả lại, yêu cầu tìm thêm phương án','rs-return',id,'btn full-width spaced')}`,
+      approved: `<div class="info-box">Đã có phê duyệt. Quản lý và HR thông báo trực tiếp cho nhân viên; hệ thống không gửi thông báo tự động.</div>${confirmForm({type:'rs-exit',id},'Khởi chạy nghỉ việc và bàn giao','ops')}`,
+      redeployed: `<div class="success-note">${icon('check',18)} Nhân viên đã đồng ý điều chuyển sang ${p.target}.</div>`,
+      reskill: `<div class="success-note">${icon('book',18)} Đang học bù để chuyển sang ${p.target}.</div>`,
+      exit: `<div class="success-note">${icon('logout',18)} Đã chuyển sang quy trình nghỉ việc và bàn giao (UC-15).</div>`
+    };
+    showDialog('Hồ sơ nhân sự bị ảnh hưởng',`<div class="detail-meta">${badge(p.id)}${statusBadge(row.status)}</div><div class="person-detail">${avatar(p.initials,p.color,true)}<div><h3>${p.name}</h3><p>${p.role} · ${p.tenure}</p></div></div>${p.option==='none'?'':`<div class="evidence-panel"><span class="eyebrow">PHƯƠNG ÁN NỘI BỘ · AI ĐỀ XUẤT</span><h3>${p.target}</h3><p>${p.finding}</p><p>${p.evidence}</p></div>`}${steps[row.status]}`);
+  } else if(action==='rs-return') {
+    showDialog('Trả lại hồ sơ',confirmForm({type:'rs-return',id},'Gửi yêu cầu tìm thêm phương án','bu',`<label class="form-label">Lý do<textarea name="reason" required rows="3" maxlength="500" placeholder="Ví dụ: xem thêm nhu cầu ở khối Enterprise Solutions..."></textarea></label>`));
   } else if(action==='attendance-row') {
     const r=state.attendance.find(x=>x.id===id);
     showDialog('Kiểm tra bất thường công',`<div class="detail-meta">${badge(r.id)}${statusBadge(r.status)}</div><h3>${r.name} · ${r.date}</h3><p>${r.issue}</p><div class="evidence-panel"><span class="eyebrow">BẰNG CHỨNG</span><p>${r.evidence||'Chưa có xác nhận từ quản lý.'}</p><strong>Đề xuất: ${r.proposal}</strong></div>${r.status==='done'?'<div class="success-note">Điều chỉnh mẫu đã được duyệt.</div>':r.evidence?confirmForm({type:'attendance-approve',id},'Duyệt điều chỉnh công mẫu','ops'):confirmForm({type:'attendance-evidence',id},'Xác nhận 2 giờ OT theo lịch triển khai','manager')}`);

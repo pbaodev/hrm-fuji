@@ -1,5 +1,5 @@
-import { initial, people, roles, jobs, candidates } from './data.mjs';
-export const STORAGE_KEY = 'nova-workforce-demo-v2';
+import { initial, people, roles, jobs, candidates, affected } from './data.mjs';
+export const STORAGE_KEY = 'nova-workforce-demo-v3';
 export const freshState = () => structuredClone(initial);
 const requireThat = (condition, message) => { if (!condition) throw new Error(message); };
 const requireRole = (actual, expected) => requireThat(actual === expected, `Chuyển sang vai trò ${roles[expected].label} để thực hiện bước này.`);
@@ -9,7 +9,7 @@ export function restoreState(raw) {
     requireThat(s?.version === initial.version, 'version');
     for (const key of ['requests', 'skills', 'attendance', 'interests', 'enrolled', 'shortlist', 'audit']) requireThat(Array.isArray(s[key]), key);
     requireThat(Number.isFinite(s.leaveBalance) && s.leaveBalance >= 0 && s.offboarding?.items?.length === 5, 'shape');
-    requireThat(s.skills.length === initial.skills.length && s.attendance.length === initial.attendance.length, 'fixtures');
+    requireThat(s.skills.length === initial.skills.length && s.attendance.length === initial.attendance.length && s.restructure?.length === initial.restructure.length, 'fixtures');
     requireThat(s.requests.every(r => r.id && Array.isArray(r.stages) && r.stages.every(t => roles[t.role])), 'requests');
     return s;
   } catch { return freshState(); }
@@ -86,6 +86,31 @@ export function transition(previous, action) {
     requireRole(a.role, 'employee'); requireThat(s.staffing?.status === 'pending' && s.staffing.stage === 0, 'Phương án không còn chờ phản hồi.');
     requireThat(a.reason?.trim(), 'Vui lòng nêu lý do.');
     s.staffing.status = 'declined'; s.staffing.reason = a.reason.trim(); message = 'Nhân viên từ chối phương án Atlas; trở về HR phụ trách khối';
+  } else if (a.type.startsWith('rs-')) {
+    // UC-16: bố trí lại trước; cắt giảm chỉ sau rà soát và phê duyệt của con người.
+    const row = s.restructure.find(x => x.id === a.id), person = affected.find(x => x.id === a.id);
+    requireThat(row && person, 'Không tìm thấy hồ sơ.');
+    if (a.type === 'rs-redeploy' || a.type === 'rs-reskill') {
+      requireRole(a.role, 'hrbp'); requireThat(row.status === 'open', 'Hồ sơ đã được xử lý.');
+      requireThat(person.option === (a.type === 'rs-redeploy' ? 'full' : 'partial'), 'Phương án không áp dụng cho hồ sơ này.');
+      row.status = a.type === 'rs-redeploy' ? 'redeployed' : 'reskill';
+      message = `${person.name}: ${a.type === 'rs-redeploy' ? 'đồng ý điều chuyển sang' : 'bắt đầu học bù để chuyển sang'} ${person.target}`;
+    } else if (a.type === 'rs-review') {
+      requireRole(a.role, 'hrbp'); requireThat(row.status === 'open' && person.option === 'none', 'Chỉ gửi rà soát khi không còn phương án nội bộ.');
+      requireThat(a.checked, 'Cần xác nhận đã rà soát cùng pháp chế.');
+      row.status = 'review'; message = `${person.name}: gửi hồ sơ rà soát cho Trưởng khối`;
+    } else if (a.type === 'rs-approve') {
+      requireRole(a.role, 'bu'); requireThat(row.status === 'review', 'Hồ sơ chưa ở bước phê duyệt.');
+      requireThat(s.restructure.every(x => x.id === row.id || x.status !== 'open'), 'Cần xử lý xong phương án nội bộ cho những người còn lại trước.');
+      row.status = 'approved'; message = `${person.name}: Trưởng khối phê duyệt phương án cắt giảm`;
+    } else if (a.type === 'rs-return') {
+      requireRole(a.role, 'bu'); requireThat(row.status === 'review', 'Hồ sơ chưa ở bước phê duyệt.');
+      requireThat(a.reason?.trim(), 'Vui lòng nêu lý do trả lại.');
+      row.status = 'open'; row.returned = a.reason.trim(); message = `${person.name}: Trưởng khối yêu cầu tìm thêm phương án`;
+    } else if (a.type === 'rs-exit') {
+      requireRole(a.role, 'ops'); requireThat(row.status === 'approved', 'Chưa có phê duyệt.');
+      row.status = 'exit'; message = `${person.name}: khởi chạy quy trình nghỉ việc và bàn giao`;
+    } else throw new Error('Thao tác không được hỗ trợ.');
   } else if (a.type === 'attendance-approve') {
     requireRole(a.role, 'ops'); const row = s.attendance.find(x => x.id === a.id);
     requireThat(row?.status === 'pending', 'Bản ghi đã được xử lý.');
