@@ -1,0 +1,5 @@
+prototype/dist/
+prototype/node_modules/
+prototype/.site-workflow/
+output/
+.DS_Store
