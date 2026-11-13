@@ -46,3 +46,4 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, '127.0.0.1', () => {
   console.log(`NOVA Workforce Prototype running at http://127.0.0.1:${PORT}/`);
 });
+

@@ -158,6 +158,54 @@ export function performance(s,v) {
   <section class="card lower-section">
     ${cardHead('AI Calibration & Merit Planning Engine','Hội đồng HR điều phối phân phối chuẩn Bell Curve & kiểm soát trần ngân sách quỹ thưởng',badge('HITL Review Active','red'))}
     ${calibMetrics}
+
+    <div class="card" style="background:#181b22;border:1px solid #2d3340;border-radius:10px;padding:22px;margin:20px 0;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <div>
+          <span class="eyebrow" style="color:#f87171;font-size:9px;letter-spacing:1.5px;">LUỒNG TỰ ĐỘNG HÓA · AI AUTOMATION WORKFLOW &amp; HITL</span>
+          <h3 style="color:#ffffff;font-size:16px;margin-top:4px;">Kiến trúc 7 bước: AI Performance Calibration &amp; Merit Planning Engine</h3>
+        </div>
+        <span class="badge" style="background:#282f3d;color:#94a3b8;border:1px solid #3b4252;">7 Steps Pipeline</span>
+      </div>
+      
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px;max-width:760px;margin:0 auto;">
+        <div style="width:100%;background:#222731;border:1px solid #374151;border-radius:6px;padding:11px 16px;text-align:center;">
+          <strong style="color:#e2e8f0;font-size:12px;">Dữ liệu 1 năm: KPI/OKR, Task Jira/GitHub, Đánh giá 360, Khen thưởng/Kỷ luật</strong>
+        </div>
+        <div style="color:#64748b;font-size:14px;line-height:1;">↓</div>
+        
+        <div style="width:100%;background:#222731;border:1px solid #374151;border-radius:6px;padding:11px 16px;text-align:center;">
+          <strong style="color:#e2e8f0;font-size:12px;">AI Evidence Synthesizer: Tóm tắt hiệu suất cả năm của từng nhân sự kèm dẫn chứng</strong>
+        </div>
+        <div style="color:#64748b;font-size:14px;line-height:1;">↓</div>
+
+        <div style="width:100%;background:#222731;border:1px solid #374151;border-radius:6px;padding:11px 16px;text-align:center;">
+          <strong style="color:#e2e8f0;font-size:12px;">AI Bias &amp; Outlier Detector: Phát hiện lệch chuẩn đánh giá giữa các phòng ban</strong>
+        </div>
+        <div style="color:#64748b;font-size:14px;line-height:1;">↓</div>
+
+        <div style="width:100%;background:#222731;border:1px solid #374151;border-radius:6px;padding:11px 16px;text-align:center;">
+          <strong style="color:#e2e8f0;font-size:12px;">AI Calibration Optimizer: Thuật toán giải bài toán tối ưu phân phối chuẩn Bell Curve</strong>
+        </div>
+        <div style="color:#64748b;font-size:14px;line-height:1;">↓</div>
+
+        <div style="width:100%;background:#222731;border:1px solid #374151;border-radius:6px;padding:11px 16px;text-align:center;">
+          <strong style="color:#e2e8f0;font-size:12px;">AI Merit Simulator: Đề xuất mức tăng lương &amp; thưởng theo trần ngân sách tài chính</strong>
+        </div>
+        <div style="color:#64748b;font-size:14px;line-height:1;">↓</div>
+
+        <div style="width:100%;background:#2d2024;border:1.5px solid #ea0029;border-radius:6px;padding:13px 16px;text-align:center;box-shadow:0 0 16px rgba(234,0,41,0.2);">
+          <strong style="color:#ff8598;font-size:12px;">HITL: Dashboard cho Hội đồng HR duyệt, điều chỉnh trực quan &amp; xem tác động ngân sách realtime</strong>
+          <small style="display:block;color:#fca5a5;font-size:10.5px;margin-top:4px;">AI không tự quyết định · Chỉ gắn cờ cảnh báo các trường hợp ngoại lệ (Edge cases)</small>
+        </div>
+        <div style="color:#64748b;font-size:14px;line-height:1;">↓</div>
+
+        <div style="width:100%;background:#222731;border:1px solid #374151;border-radius:6px;padding:11px 16px;text-align:center;">
+          <strong style="color:#e2e8f0;font-size:12px;">AI tự động sinh thư thông báo kết quả &amp; kế hoạch phát triển cá nhân IDP cho từng nhân viên</strong>
+        </div>
+      </div>
+    </div>
+
     ${aiNote('Vai trò HITL: AI đóng vai trò Người phản biện độc lập. AI đối chiếu kết quả tự chấm của phòng ban với dữ liệu thực tế 12 tháng (KPI, Jira, 360) và gắn cờ cảnh báo các trường hợp ngoại lệ (Edge cases). Hội đồng HR chỉ cần can thiệp các ca được gắn cờ, đảm bảo công bằng và giữ an toàn trần ngân sách tài chính.')}
     <div class="two-columns" style="margin-top:16px;">
       <div class="evidence-block">
