@@ -13,6 +13,8 @@ docs/
 
 ## 1. Overview
 
+**Bối cảnh** một tập đoàn IT lớn, nhiều khối kinh doanh, liên tục mở rộng và tái cấu trúc : dự án, nhân lực kém hiểu quả cắt bỏ nhanh.bài toán đặt ra hệ thống AI hỗ trợ toàn bộ vòng đời của nhân sự, từ tuyển dụng, làm việc, đào tạo, phát triển, luân chuyển cho đến nghỉ việc.
+
 **Bài toán:** xây dựng AI-powered Workforce Ecosystem giúp nhân viên làm việc hiệu quả hơn, đồng thời hỗ trợ HR và lãnh đạo quản trị, phân bổ và tối ưu nguồn nhân lực toàn tập đoàn.
 
 | Mục tiêu | Ý nghĩa |
@@ -39,41 +41,41 @@ Chi tiết: [AI_Workforce_Ecosystem.md](01-overview/AI_Workforce_Ecosystem.md)
 
 ## 3. Use case
 
-15 use case, chia 3 nhóm: **A. Employee AI** (UC-01 đến 05), **B. HR Management AI** (UC-06 đến 10), **C. HR Ecosystem AI** (UC-11 đến 15). Đường đậm là actor chính. Line Manager cũng là Employee nên làm được mọi use case của Employee.
+15 use case, chia 3 nhóm: **A. Nhân viên** (UC-01 đến 05), **B. Quản lý nhân sự** (UC-06 đến 10), **C. Điều phối và kết nối** (UC-11 đến 15). Quản lý trực tiếp cũng là nhân viên nên làm được mọi việc của nhân viên.
 
 ```mermaid
 flowchart LR
-    LM["«actor»<br/>Line Manager"]
-    EMP["«actor»<br/>Employee"]
-    CAND["«actor»<br/>Candidate / New Hire"]
+    LM["Quản lý trực tiếp"]
+    EMP["Nhân viên"]
+    CAND["Ứng viên /<br/>Nhân viên mới"]
 
     subgraph SYS["AI Workforce Ecosystem"]
-        subgraph GC["C. HR Ecosystem AI"]
-            UC15(["UC-15 Điều phối offboarding<br/>và bàn giao tri thức"])
-            UC13(["UC-13 Đề xuất phương án<br/>bố trí nhân sự"])
-            UC14(["UC-14 Chuẩn bị buổi 1-1"])
-            UC12(["UC-12 Xây dựng và xác thực<br/>hồ sơ kỹ năng"])
-            UC11(["UC-11 Điều phối yêu cầu<br/>xuyên phòng ban"])
+        subgraph GC["C. Điều phối và kết nối"]
+            UC15(["UC-15 Nghỉ việc và bàn giao"])
+            UC13(["UC-13 Bố trí nhân sự cho dự án"])
+            UC14(["UC-14 Chuẩn bị họp 1-1"])
+            UC12(["UC-12 Xây dựng hồ sơ kỹ năng"])
+            UC11(["UC-11 Điều phối yêu cầu<br/>liên phòng ban"])
         end
-        subgraph GB["B. HR Management AI"]
-            UC09(["UC-09 Xử lý bất thường công và OT<br/>trước chốt lương"])
-            UC10(["UC-10 Phân tích sức khỏe tổ chức<br/>cấp đơn vị"])
-            UC06(["UC-06 Phân tích chênh lệch<br/>cung–cầu nhân lực"])
-            UC07(["UC-07 Sàng lọc và xếp hạng<br/>hồ sơ ứng viên"])
-            UC08(["UC-08 Tổng hợp bằng chứng<br/>cho kỳ đánh giá"])
+        subgraph GB["B. Quản lý nhân sự"]
+            UC09(["UC-09 Xử lý sai lệch<br/>chấm công, làm thêm giờ"])
+            UC10(["UC-10 Theo dõi sức khỏe tổ chức"])
+            UC06(["UC-06 Phân tích thừa, thiếu nhân lực"])
+            UC07(["UC-07 Sàng lọc CV"])
+            UC08(["UC-08 Chuẩn bị đánh giá hiệu suất"])
         end
-        subgraph GA["A. Employee AI"]
-            UC05(["UC-05 Khám phá<br/>cơ hội nội bộ"])
-            UC04(["UC-04 Lập lộ trình học<br/>theo skill gap"])
-            UC03(["UC-03 Tìm và tóm tắt<br/>tri thức nội bộ"])
-            UC02(["UC-02 Tạo và theo dõi<br/>yêu cầu nghỉ phép"])
-            UC01(["UC-01 Tra cứu trạng thái ứng tuyển<br/>và thủ tục nhận việc"])
+        subgraph GA["A. Nhân viên"]
+            UC05(["UC-05 Tìm cơ hội nội bộ"])
+            UC04(["UC-04 Lập lộ trình học"])
+            UC03(["UC-03 Tìm và tóm tắt<br/>tài liệu nội bộ"])
+            UC02(["UC-02 Xin nghỉ phép qua chat"])
+            UC01(["UC-01 Tra cứu hồ sơ<br/>ứng tuyển, nhận việc"])
         end
     end
 
-    OPS["«actor»<br/>HR Ops / Payroll"]
-    HRBP["«actor»<br/>HRBP"]
-    REC["«actor»<br/>Recruiter"]
+    OPS["HR vận hành /<br/>Chuyên viên lương"]
+    HRBP["HR phụ trách khối"]
+    REC["Chuyên viên tuyển dụng"]
 
     LM === UC14
     LM === UC11
@@ -93,6 +95,24 @@ flowchart LR
     UC06 === HRBP
     UC07 === REC
 ```
+
+| ID | Use case | Người thực hiện | Người liên quan | Luồng |
+|---|---|---|---|---|
+| UC-01 | Tra cứu hồ sơ ứng tuyển, nhận việc | Ứng viên, nhân viên mới | Tuyển dụng, HR vận hành | Hỏi → AI tra hồ sơ → trả lời kèm việc còn thiếu |
+| UC-02 | Xin nghỉ phép qua chat | Nhân viên | Quản lý trực tiếp | Mô tả nhu cầu → kiểm tra số ngày phép → quản lý duyệt |
+| UC-03 | Tìm và tóm tắt tài liệu nội bộ | Nhân viên | Không có | Hỏi → tìm tài liệu được phép xem → AI tóm tắt kèm nguồn |
+| UC-04 | Lập lộ trình học | Nhân viên | Quản lý trực tiếp, người hướng dẫn | Chọn mục tiêu → xác định kỹ năng thiếu → AI gợi ý khóa học |
+| UC-05 | Tìm cơ hội nội bộ | Nhân viên | Quản lý dự án, HR phụ trách khối | Nêu nguyện vọng → AI gợi ý vị trí phù hợp → đăng ký quan tâm |
+| UC-06 | Phân tích thừa, thiếu nhân lực | HR phụ trách khối | Trưởng khối, Tài chính | Tổng hợp người có và người cần → AI đề xuất cách bù → trình trưởng khối |
+| UC-07 | Sàng lọc CV | Chuyên viên tuyển dụng | Quản lý cần tuyển | AI chấm CV kèm lý do → tuyển dụng chốt danh sách |
+| UC-08 | Chuẩn bị đánh giá hiệu suất | Quản lý trực tiếp | Nhân viên, HR phụ trách khối | Gom bằng chứng → AI soạn nháp → quản lý sửa và xếp loại |
+| UC-09 | Xử lý sai lệch chấm công, làm thêm giờ | Chuyên viên lương | Nhân viên, quản lý trực tiếp | Quét dữ liệu công → phát hiện sai lệch → xác nhận, sửa → chốt lương |
+| UC-10 | Theo dõi sức khỏe tổ chức | HR phụ trách khối | Trưởng khối, Giám đốc nhân sự | Tính chỉ số theo nhóm → AI giải thích biến động → chọn hành động |
+| UC-11 | Điều phối yêu cầu liên phòng ban | Nhân viên, quản lý trực tiếp | HR vận hành, IT, Tài chính | Nhận yêu cầu → giao người, đặt hạn → nhắc việc → hoàn tất |
+| UC-12 | Xây dựng hồ sơ kỹ năng | Nhân viên | Quản lý trực tiếp | AI rút kỹ năng từ CV, dự án → nhân viên xác nhận → quản lý xác thực |
+| UC-13 | Bố trí nhân sự cho dự án | HR phụ trách khối | Quản lý dự án, trưởng khối, nhân viên | AI gợi ý người phù hợp → nhân viên đồng ý → trưởng khối duyệt |
+| UC-14 | Chuẩn bị họp 1-1 | Quản lý trực tiếp | Nhân viên | AI tóm tắt tình hình, gợi ý chủ đề → họp → theo dõi việc cần làm |
+| UC-15 | Nghỉ việc và bàn giao | HR vận hành | Nhân viên nghỉ việc, IT, Tài chính | Tạo checklist → bàn giao công việc → thu hồi tài sản, quyền → quyết toán |
 
 | File | Nội dung |
 |---|---|

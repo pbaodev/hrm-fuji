@@ -1,5 +1,5 @@
 import { initial, people, roles, jobs, candidates } from './data.mjs';
-export const STORAGE_KEY = 'nova-workforce-demo-v1';
+export const STORAGE_KEY = 'nova-workforce-demo-v2';
 export const freshState = () => structuredClone(initial);
 const requireThat = (condition, message) => { if (!condition) throw new Error(message); };
 const requireRole = (actual, expected) => requireThat(actual === expected, `Chuyển sang vai trò ${roles[expected].label} để thực hiện bước này.`);
@@ -40,6 +40,12 @@ export function transition(previous, action) {
     const id = `RQ-${1043+s.requests.length-initial.requests.length}`;
     s.requests.unshift({ id, title: `Nghỉ phép · ${days} ngày`, person: 'Trần Hoàng Nam', initials: 'HN', unit: 'Digital Products', category: 'leave', status: 'pending', start: a.start, end: a.end, days, detail: a.reason.trim(), date: '13/11/2026', due: 'Chờ quản lý', urgent: false, stages: [{ label: 'Quản lý phê duyệt', role: 'manager', done: false }] });
     message = `Tạo ${id}: nghỉ phép ${days} ngày, chờ quản lý phê duyệt`;
+  } else if (a.type === 'request-create') {
+    requireRole(a.role, 'employee');
+    requireThat(['equipment','access'].includes(a.category) && a.title?.trim() && a.detail?.trim(), 'Vui lòng điền đủ loại, tiêu đề và nội dung yêu cầu.');
+    const id = `RQ-${1043+s.requests.length-initial.requests.length}`;
+    s.requests.unshift({ id, title: a.title.trim(), person: 'Trần Hoàng Nam', initials: 'HN', unit: 'Digital Products', category: a.category, status: 'pending', date: '13/11/2026', due: 'Chờ quản lý', urgent: false, detail: a.detail.trim(), stages: [{label:'Quản lý phê duyệt',role:'manager',done:false},{label:'HR vận hành phối hợp bộ phận thực hiện',role:'ops',done:false}] });
+    message = `Tạo ${id}: ${a.title.trim()}`;
   } else if (a.type === 'request-step' || a.type === 'request-reject') {
     const r = s.requests.find(r => r.id === a.id);
     requireThat(r && ['pending','active'].includes(r.status), 'Yêu cầu không còn chờ xử lý.');
@@ -75,11 +81,11 @@ export function transition(previous, action) {
     requireRole(a.role, ['employee','manager','bu','hrbp'][p.stage]);
     p.stage++;
     if (p.stage === 4) { p.status = 'done'; p.allocated = true; }
-    message = ['','Nhân viên đồng ý tham gia Atlas','Quản lý xác nhận nhả người ngày 01/12','BU Head phê duyệt phương án Atlas','Hoàn tất mô phỏng phân bổ Atlas'][p.stage];
+    message = ['','Nhân viên đồng ý tham gia Atlas','Quản lý xác nhận nhả người ngày 01/12','Trưởng khối phê duyệt phương án Atlas','Hoàn tất mô phỏng phân bổ Atlas'][p.stage];
   } else if (a.type === 'staff-decline') {
     requireRole(a.role, 'employee'); requireThat(s.staffing?.status === 'pending' && s.staffing.stage === 0, 'Phương án không còn chờ phản hồi.');
     requireThat(a.reason?.trim(), 'Vui lòng nêu lý do.');
-    s.staffing.status = 'declined'; s.staffing.reason = a.reason.trim(); message = 'Nhân viên từ chối phương án Atlas; trở về HRBP';
+    s.staffing.status = 'declined'; s.staffing.reason = a.reason.trim(); message = 'Nhân viên từ chối phương án Atlas; trở về HR phụ trách khối';
   } else if (a.type === 'attendance-approve') {
     requireRole(a.role, 'ops'); const row = s.attendance.find(x => x.id === a.id);
     requireThat(row?.status === 'pending', 'Bản ghi đã được xử lý.');
@@ -102,7 +108,7 @@ export function transition(previous, action) {
     const key = { interest: 'interests', enroll: 'enrolled', shortlist: 'shortlist' }[a.type];
     const valid = a.type === 'interest' ? jobs.some(x => x.id === a.id) : a.type === 'shortlist' ? candidates.some(x => x.id === a.id) : ['course-1','course-2','course-3'].includes(a.id);
     requireThat(valid, 'Không tìm thấy mục đã chọn.'); requireThat(!s[key].includes(a.id), 'Bạn đã thực hiện thao tác này.');
-    s[key].push(a.id); message = `${{interest:'Bày tỏ quan tâm',enroll:'Đăng ký khóa học nội bộ miễn phí',shortlist:'Recruiter thêm vào shortlist'}[a.type]}: ${a.id}`;
+    s[key].push(a.id); message = `${{interest:'Bày tỏ quan tâm',enroll:'Đăng ký khóa học nội bộ miễn phí',shortlist:'Chuyên viên tuyển dụng thêm vào shortlist'}[a.type]}: ${a.id}`;
   } else if (['agenda','review'].includes(a.type)) {
     requireRole(a.role, 'manager'); requireThat(a.text?.trim(), 'Vui lòng nhập nội dung trước khi lưu.');
     s[a.type] = a.text.trim(); message = a.type === 'agenda' ? 'Quản lý lưu agenda 1:1' : 'Quản lý lưu bản nháp đánh giá';

@@ -57,7 +57,7 @@ test('staffing excludes unavailable people and preserves refusal without realloc
   assert.equal(refused.staffing.status, 'declined');
   assert.equal(refused.staffing.allocated, false);
 });
-test('attendance corrections require HR Ops and evidence, with an audit event', () => {
+test('attendance corrections require HR vận hành and evidence, with an audit event', () => {
   const s = freshState();
   assert.throws(() => transition(s, { type: 'attendance-approve', role: 'hrbp', id: 'AT-031' }));
   assert.throws(() => transition(s, { type: 'attendance-approve', role: 'ops', id: 'AT-032' }));

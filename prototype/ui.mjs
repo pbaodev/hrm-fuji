@@ -1,3 +1,4 @@
+import { kinds } from './tour.mjs';
 export const esc = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const paths = {
   grid: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
@@ -43,4 +44,5 @@ export const button = (label, action, value = '', cls = 'btn', extra = '') => `<
 export const link = (route, label, cls = 'text-link') => `<a class="${cls}" href="#/${route}">${label}</a>`;
 export const empty = (title, text) => `<div class="empty-state">${icon('check',32)}<h3>${title}</h3><p>${text}</p></div>`;
 export const aiNote = text => `<div class="ai-note">${icon('spark',18)}<span>${text}</span></div>`;
-export const pageHead = (eyebrow, title, subtitle, actions = '') => `<div class="page-heading"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p>${subtitle}</p></div><div class="page-actions">${actions}</div></div>`;
+export const pageHead = (eyebrow, title, subtitle, actions = '') => `<div class="page-heading"><div><div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p>${subtitle}</p></div><div class="page-actions">${actions}</div></div><!--flow-->`;
+export const kindTag = (kind, label = kinds[kind]) => `<span class="kind ${kind}">${kind==='ai'?icon('spark',11):''}${label}</span>`;

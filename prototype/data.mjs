@@ -1,10 +1,10 @@
 export const roles = {
-  hrbp: { label: 'HR Business Partner', name: 'Minh Anh', full: 'Nguyễn Minh Anh', initials: 'MA', job: 'HR Business Partner' },
+  hrbp: { label: 'HR phụ trách khối', name: 'Minh Anh', full: 'Nguyễn Minh Anh', initials: 'MA', job: 'HR phụ trách khối' },
   employee: { label: 'Nhân viên', name: 'Hoàng Nam', full: 'Trần Hoàng Nam', initials: 'HN', job: 'Senior Backend Engineer' },
-  manager: { label: 'Line Manager', name: 'Thanh Hà', full: 'Lê Thanh Hà', initials: 'TH', job: 'Engineering Manager' },
-  recruiter: { label: 'Recruiter', name: 'Thu Trang', full: 'Phạm Thu Trang', initials: 'TT', job: 'Talent Acquisition' },
-  ops: { label: 'HR Ops / Payroll', name: 'Hải Yến', full: 'Đỗ Hải Yến', initials: 'HY', job: 'People Operations' },
-  bu: { label: 'BU Head', name: 'Đức Minh', full: 'Nguyễn Đức Minh', initials: 'ĐM', job: 'Head of Digital Products' },
+  manager: { label: 'Quản lý trực tiếp', name: 'Thanh Hà', full: 'Lê Thanh Hà', initials: 'TH', job: 'Quản lý kỹ thuật' },
+  recruiter: { label: 'Chuyên viên tuyển dụng', name: 'Thu Trang', full: 'Phạm Thu Trang', initials: 'TT', job: 'Tuyển dụng' },
+  ops: { label: 'HR vận hành / Tiền lương', name: 'Hải Yến', full: 'Đỗ Hải Yến', initials: 'HY', job: 'Vận hành nhân sự' },
+  bu: { label: 'Trưởng khối', name: 'Đức Minh', full: 'Nguyễn Đức Minh', initials: 'ĐM', job: 'Trưởng khối Digital Products' },
   candidate: { label: 'Ứng viên mới', name: 'Mai Chi', full: 'Vũ Mai Chi', initials: 'MC', job: 'Ứng viên Product Designer' }
 };
 export const nav = [
@@ -45,9 +45,9 @@ export const workforce = [
 export const initial = {
   version: 1, leaveBalance: 8, interests: [], enrolled: [], shortlist: [], agenda: '', review: '', healthAction: false,
   requests: [
-    { id: 'RQ-1042', title: 'Cấp laptop cho dự án Atlas', person: 'Trần Hoàng Nam', initials: 'HN', category: 'equipment', unit: 'Digital Products', status: 'pending', date: '13/11/2026', due: 'Hôm nay', urgent: true, detail: 'MacBook Pro 14 inch, RAM 32 GB. Phục vụ phát triển backend cho Project Atlas.', stages: [{ label: 'Quản lý phê duyệt', role: 'manager', done: false }, { label: 'HR Ops phối hợp IT cấp thiết bị', role: 'ops', done: false }] },
-    { id: 'RQ-1041', title: 'Xác nhận công ngày 10/11', person: 'Nguyễn Ngọc Linh', initials: 'NL', category: 'attendance', unit: 'Enterprise Solutions', status: 'active', date: '12/11/2026', due: 'Quá hạn 1 ngày', urgent: true, detail: 'Nhân viên thiếu check-out. Đã có xác nhận của quản lý và lịch sử truy cập văn phòng.', stages: [{ label: 'Quản lý xác nhận', role: 'manager', done: true }, { label: 'HR Ops kiểm tra bằng chứng', role: 'ops', done: false }] },
-    { id: 'RQ-1040', title: 'Đăng ký AWS Solutions Architect', person: 'Phạm Quang Huy', initials: 'QH', category: 'learning', unit: 'Cloud & Infrastructure', status: 'pending', date: '12/11/2026', due: '16/11/2026', urgent: false, detail: 'Khóa AWS Solutions Architect, chi phí mẫu 3.200.000đ, thời lượng 6 tuần.', stages: [{ label: 'Quản lý duyệt ngân sách', role: 'manager', done: false }, { label: 'HR Ops ghi danh', role: 'ops', done: false }] },
+    { id: 'RQ-1042', title: 'Cấp laptop cho dự án Atlas', person: 'Trần Hoàng Nam', initials: 'HN', category: 'equipment', unit: 'Digital Products', status: 'pending', date: '13/11/2026', due: 'Hôm nay', urgent: true, detail: 'MacBook Pro 14 inch, RAM 32 GB. Phục vụ phát triển backend cho Project Atlas.', stages: [{ label: 'Quản lý phê duyệt', role: 'manager', done: false }, { label: 'HR vận hành phối hợp IT cấp thiết bị', role: 'ops', done: false }] },
+    { id: 'RQ-1041', title: 'Xác nhận công ngày 10/11', person: 'Nguyễn Ngọc Linh', initials: 'NL', category: 'attendance', unit: 'Enterprise Solutions', status: 'active', date: '12/11/2026', due: 'Quá hạn 1 ngày', urgent: true, detail: 'Nhân viên thiếu check-out. Đã có xác nhận của quản lý và lịch sử truy cập văn phòng.', stages: [{ label: 'Quản lý xác nhận', role: 'manager', done: true }, { label: 'HR vận hành kiểm tra bằng chứng', role: 'ops', done: false }] },
+    { id: 'RQ-1040', title: 'Đăng ký AWS Solutions Architect', person: 'Phạm Quang Huy', initials: 'QH', category: 'learning', unit: 'Cloud & Infrastructure', status: 'pending', date: '12/11/2026', due: '16/11/2026', urgent: false, detail: 'Khóa AWS Solutions Architect, chi phí mẫu 3.200.000đ, thời lượng 6 tuần.', stages: [{ label: 'Quản lý duyệt ngân sách', role: 'manager', done: false }, { label: 'HR vận hành ghi danh', role: 'ops', done: false }] },
     { id: 'RQ-1039', title: 'Onboarding · Vũ Mai Chi', person: 'Vũ Mai Chi', initials: 'MC', category: 'onboarding', unit: 'Digital Products', status: 'active', date: '11/11/2026', due: '18/11/2026', urgent: false, detail: 'Product Designer · nhận việc ngày 18/11. Hợp đồng mẫu đã xác nhận; chờ chuẩn bị thiết bị.', stages: [{ label: 'HR xác nhận hồ sơ', role: 'ops', done: true }, { label: 'Chuẩn bị thiết bị và lịch nhận việc', role: 'ops', done: false }] },
     { id: 'RQ-1038', title: 'Cấp quyền kho tài liệu Design', person: 'Đặng Bảo Ngọc', initials: 'BN', category: 'access', unit: 'Digital Products', status: 'done', date: '10/11/2026', due: 'Đã hoàn tất', urgent: false, detail: 'Quyền đọc kho Design System đã được cấp trong dữ liệu mô phỏng.', stages: [{ label: 'Quản lý duyệt', role: 'manager', done: true }, { label: 'IT cấp quyền', role: 'ops', done: true }] }
   ],
@@ -72,4 +72,26 @@ export const initial = {
     { id: 'off-5', label: 'Xác nhận quyết toán từ Finance', role: 'ops', done: false }
   ] },
   audit: [{ id: 'evt-1', text: 'Lê Thanh Hà xác nhận kỹ năng Java của Trần Hoàng Nam', role: 'manager', at: '2026-11-13T08:30:00+07:00' }]
+};
+
+// Phân quyền màn hình theo vai trò. Mục đầu tiên là trang chủ của vai trò đó.
+export const access = {
+  hrbp: ['overview', 'workforce', 'workflows', 'skills', 'staffing'],
+  employee: ['overview', 'assistant', 'learning', 'workflows', 'skills', 'staffing'],
+  manager: ['overview', 'assistant', 'learning', 'performance', 'attendance', 'workflows', 'skills', 'staffing'],
+  recruiter: ['overview', 'assistant', 'recruitment'],
+  ops: ['overview', 'attendance', 'workflows'],
+  bu: ['overview', 'workforce', 'staffing'],
+  candidate: ['assistant']
+};
+export const canAccess = (role, route) => !!access[role]?.includes(route);
+export const homeOf = role => access[role]?.[0] || 'overview';
+// Phạm vi dữ liệu yêu cầu: nhân viên thấy của mình, quản lý thấy việc cần mình duyệt, HR thấy toàn bộ.
+export const scopeRequests = (requests, role) => {
+  if (role === 'hrbp' || role === 'ops') return requests;
+  if (role === 'manager') return requests.filter(r => r.stages.some(t => t.role === 'manager'));
+  if (role === 'employee' || role === 'candidate') return requests.filter(r => r.person === roles[role].full);
+  if (role === 'recruiter') return requests.filter(r => r.category === 'onboarding');
+  if (role === 'bu') return requests.filter(r => r.unit === 'Digital Products');
+  return [];
 };
