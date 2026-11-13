@@ -78,13 +78,20 @@ nguồn nhân lực trên toàn tập đoàn.**
   Leave & Payroll         cầu điều chỉnh và phê   payroll, tăng sai sót
                           duyệt tồn đọng          
 
-  7\. Performance &       Mục tiêu, kết quả,      Đánh giá thiếu bằng
-  Development             feedback và dữ liệu học chứng, khó xác định nhu
-                          tập phân tán            cầu phát triển
+  7\. Performance &       Mục tiêu/kết quả phân   Lạm phát điểm số giữa
+  Development             tán; lạm phát điểm số   các phòng ban; đánh giá
+                          (Rating Inflation);     cảm tính vì Recency
+                          đánh giá cảm tính       Bias; họp Calibration
+                          (Recency Bias); thiếu   kiệt sức cãi nhau ép Bell
+                          bằng chứng thực tế cả   Curve; thiếu lộ trình
+                          năm; họp Calibration   phát triển IDP/PIP cụ thể
+                          kéo dài 2–3 tháng       cho từng mức xếp loại
 
-  8\. Compensation,       Khó liên kết đãi ngộ,   Phản ứng muộn, khó giữ
-  Benefits & Retention    workload, engagement và chân nhân sự quan trọng
-                          nguy cơ nghỉ việc       
+  8\. Compensation,       Khó liên kết hiệu suất  Phân bổ quỹ thưởng thủ
+  Benefits & Retention    với đãi ngộ; phân bổ    công dễ vượt trần ngân
+                          quỹ thưởng (Merit       sách tài chính; chia cào
+                          Matrix) thủ công, dễ    bằng triệt tiêu động lực,
+                          vượt trần ngân sách     nguy cơ mất nhân sự giỏi       
 
   9\. Career, Talent &    Thiếu bản đồ kỹ năng và Bỏ lỡ nhân tài nội bộ,
   Workforce Mobility      thông tin vị trí/dự án  tăng tuyển dụng ngoài
@@ -123,7 +130,7 @@ mindmap
     HR Management AI
       Workforce Planning & Forecasting
       Talent Acquisition Copilot
-      Performance & Talent Review Copilot
+      Performance Calibration & Merit Planning Engine
       Payroll & Attendance Intelligence
       Organizational Health & Retention Intelligence
     HR Ecosystem AI
@@ -168,13 +175,16 @@ mindmap
                                                   tin, hỗ trợ báo cáo và
                                                   công việc
 
-  4\. AI Learning & Skill Employee                Xác định skill gap, gợi
-  Growth Coach                                    ý khóa học, lộ trình
-                                                  học và mentor
+  4\. AI Learning & Skill Employee, Line Manager, Xác định skill gap; thực thi
+  Growth Coach            L&D Specialist          lộ trình IDP (cán bộ nguồn)
+                                                  & PIP 90 ngày (cải thiện);
+                                                  sinh đề test mốc lộ trình
+                                                  và đề test định kỳ qua LMS
 
-  5\. AI Career &         Employee                Khám phá vị trí, dự án
-  Opportunity Navigator                           và cơ hội luân chuyển
-                                                  nội bộ phù hợp
+  5\. AI Career &         Employee, BU Head,      Khám phá vị trí, dự án
+  Opportunity Navigator   HRBP                    nội bộ; quy hoạch cán bộ
+                                                  nguồn, lộ trình kế nhiệm
+                                                  (Succession) & thăng tiến
   -----------------------------------------------------------------------
 
 ### B. HR Management AI
@@ -186,15 +196,23 @@ mindmap
   Planning & Forecasting                          năng, so sánh nhu cầu
                                                   với nguồn lực hiện có
 
-  7\. AI Talent           Recruiter, Hiring       Hỗ trợ JD, tìm kiếm,
-  Acquisition Copilot     Manager                 phân tích CV, matching
-                                                  và tổng hợp feedback
-                                                  phỏng vấn
+  7\. AI Talent           Recruiter, Hiring       Hỗ trợ JD, phân tích CV,
+  Acquisition Copilot     Manager                 matching; sinh đề thi test
+                                                  ứng viên theo từng role;
+                                                  tổng hợp feedback phỏng vấn
 
-  8\. AI Performance &    Manager, HRBP           Tổng hợp mục tiêu, kết
-  Talent Review Copilot                           quả và feedback làm
-                                                  bằng chứng cho đánh
-                                                  giá/talent review
+  8\. AI Performance      Line Manager, HRBP,     Tổng hợp hồ sơ bằng chứng
+  Calibration & Merit     BU Head, Hội đồng HR    cả năm (KPI/Jira/360);
+  Planning Engine                                 phát hiện lệch chuẩn/thiên
+                                                  kiến (Bias & Outlier
+                                                  Detector); tối ưu hóa phân
+                                                  phối chuẩn Bell Curve; mô
+                                                  phỏng quỹ thưởng theo trần
+                                                  ngân sách; hỗ trợ HITL
+                                                  duyệt realtime và tự động
+                                                  sinh thư kết quả kèm kế
+                                                  hoạch IDP/PIP tích hợp
+                                                  lộ trình phát triển
 
   9\. AI Payroll &        Payroll, HR Ops         Phát hiện bất thường
   Attendance Intelligence                         công/OT/lương, phân
@@ -218,9 +236,10 @@ mindmap
                                                   escalation
 
   12\. AI Skills Graph &  Employee, HRBP, Manager Xây dựng bản đồ kỹ
-  Internal Talent                                 năng, matching nhân
-  Marketplace                                     viên với vị trí, dự án
-                                                  và mentor
+  Internal Talent                                 năng từ CV, dự án và kết
+  Marketplace                                     quả test định kỳ qua LMS;
+                                                  matching nhân sự với vị
+                                                  trí, dự án và mentor
 
   13\. AI Project         BU Head, HRBP, Project  Đề xuất điều chuyển
   Staffing & Redeployment Manager                 nhân sự giữa dự
@@ -270,6 +289,12 @@ mindmap
 -   AI chỉ hỗ trợ đề xuất; quyết định tuyển dụng, đánh giá, lương
     thưởng, luân chuyển và layoff phải có người có thẩm quyền kiểm tra,
     phê duyệt.
+-   **Nguyên tắc Human-in-the-loop (HITL) trong Performance & Merit:**
+    AI không tự ý quyết định xếp loại hay mức thưởng của nhân viên.
+    AI đóng vai trò người phản biện độc lập (chỉ rõ độ vênh giữa điểm đánh giá
+    của quản lý và bằng chứng thực tế đóng góp trên hệ thống). Hội đồng HR
+    chỉ cần tập trung can thiệp và xử lý các trường hợp ngoại lệ (Edge Cases)
+    do AI gắn cờ cảnh báo, thay vì phải rà soát thủ công hàng nghìn hồ sơ.
 -   Đo hiệu quả bằng thời gian xử lý, tỷ lệ tự phục vụ, SLA, lỗi nghiệp
     vụ, internal fill rate, redeployment rate và thời gian đạt năng
     suất.

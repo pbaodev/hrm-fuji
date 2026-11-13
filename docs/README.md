@@ -63,12 +63,12 @@ flowchart LR
             UC09(["UC-09 Xử lý sai lệch<br/>chấm công, làm thêm giờ"])
             UC10(["UC-10 Theo dõi sức khỏe tổ chức"])
             UC06(["UC-06 Phân tích thừa, thiếu nhân lực"])
-            UC07(["UC-07 Sàng lọc CV"])
-            UC08(["UC-08 Chuẩn bị đánh giá hiệu suất"])
+            UC07(["UC-07 Sàng lọc CV &<br/>sinh đề test ứng viên"])
+            UC08(["UC-08 Đánh giá hiệu suất,<br/>Calibration & Merit Planning"])
         end
         subgraph GA["A. Nhân viên"]
             UC05(["UC-05 Tìm cơ hội nội bộ"])
-            UC04(["UC-04 Lập lộ trình học"])
+            UC04(["UC-04 Lập lộ trình IDP/PIP &<br/>bài test thích ứng LMS"])
             UC03(["UC-03 Tìm và tóm tắt<br/>tài liệu nội bộ"])
             UC02(["UC-02 Xin nghỉ phép qua chat"])
             UC01(["UC-01 Tra cứu hồ sơ<br/>ứng tuyển, nhận việc"])
@@ -104,11 +104,11 @@ flowchart LR
 | UC-01 | Tra cứu hồ sơ ứng tuyển, nhận việc | Ứng viên, nhân viên mới | Tuyển dụng, HR vận hành | Hỏi → AI tra hồ sơ → trả lời kèm việc còn thiếu |
 | UC-02 | Xin nghỉ phép qua chat | Nhân viên | Quản lý trực tiếp | Mô tả nhu cầu → kiểm tra số ngày phép → quản lý duyệt |
 | UC-03 | Tìm và tóm tắt tài liệu nội bộ | Nhân viên | Không có | Hỏi → tìm tài liệu được phép xem → AI tóm tắt kèm nguồn |
-| UC-04 | Lập lộ trình học | Nhân viên | Quản lý trực tiếp, người hướng dẫn | Chọn mục tiêu → xác định kỹ năng thiếu → AI gợi ý khóa học |
+| UC-04 | Lập & thực thi lộ trình IDP/PIP | Nhân viên | Quản lý, Mentor, L&D | Tiếp nhận IDP/PIP từ UC-08 → AI gợi ý khóa học → sinh đề test checkpoint qua LMS → nghiệm thu mốc |
 | UC-05 | Tìm cơ hội nội bộ | Nhân viên | Quản lý dự án, HR phụ trách khối | Nêu nguyện vọng → AI gợi ý vị trí phù hợp → đăng ký quan tâm |
 | UC-06 | Phân tích thừa, thiếu nhân lực | HR phụ trách khối | Trưởng khối, Tài chính | Tổng hợp người có và người cần → AI đề xuất cách bù → trình trưởng khối |
-| UC-07 | Sàng lọc CV | Chuyên viên tuyển dụng | Quản lý cần tuyển | AI chấm CV kèm lý do → tuyển dụng chốt danh sách |
-| UC-08 | Chuẩn bị đánh giá hiệu suất | Quản lý trực tiếp | Nhân viên, HR phụ trách khối | Gom bằng chứng → AI soạn nháp → quản lý sửa và xếp loại |
+| UC-07 | Sàng lọc CV & sinh đề test theo role | Chuyên viên tuyển dụng | Quản lý cần tuyển, Ứng viên | AI chấm CV kèm lý do → sinh đề test kỹ thuật theo role → ứng viên làm bài trên test portal → tuyển dụng chốt danh sách |
+| UC-08 | Đánh giá hiệu suất, Calibration & Merit Planning | Quản lý trực tiếp, Hội đồng HR | Nhân viên, HR phụ trách khối, Tài chính | Gom bằng chứng 1 năm → AI phát hiện lệch chuẩn & tối ưu Bell Curve → mô phỏng quỹ thưởng → Hội đồng HR duyệt HITL → tự động sinh thư kết quả & kế hoạch IDP/PIP (kết nối UC-04) |
 | UC-09 | Xử lý sai lệch chấm công, làm thêm giờ | Chuyên viên lương | Nhân viên, quản lý trực tiếp | Quét dữ liệu công → phát hiện sai lệch → xác nhận, sửa → chốt lương |
 | UC-10 | Theo dõi sức khỏe tổ chức | HR phụ trách khối | Trưởng khối, Giám đốc nhân sự | Tính chỉ số theo nhóm → AI giải thích biến động → chọn hành động |
 | UC-11 | Điều phối yêu cầu liên phòng ban | Nhân viên, quản lý trực tiếp | HR vận hành, IT, Tài chính | Nhận yêu cầu → giao người, đặt hạn → nhắc việc → hoàn tất |
@@ -123,3 +123,4 @@ flowchart LR
 | [UC_01_Catalog.md](03-use-cases/UC_01_Catalog.md) | Bảng 16 use case, actor, phân vai AI/rules/người |
 | [UC_02_Diagrams.md](03-use-cases/UC_02_Diagrams.md) | Sơ đồ theo từng nhóm và quan hệ include/extend |
 | [UC_03_Specifications.md](03-use-cases/UC_03_Specifications.md) | Đặc tả chi tiết từng use case |
+| [UC_08_Calibration_Merit_DeepDive.md](03-use-cases/UC_08_Calibration_Merit_DeepDive.md) | Chuyên đề chi tiết: AI Performance Calibration & Merit Planning Engine |

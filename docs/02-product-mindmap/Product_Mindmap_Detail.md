@@ -26,48 +26,73 @@ Một cửa hội thoại cho ứng viên và nhân viên. Gộp feature gốc 1
 - [Rules] Tạo và theo dõi yêu cầu
   - Kiểm tra hợp lệ, nhân viên xác nhận, chuyển Workflow Orchestrator
 
-## Learning & Career Navigator (Định hướng học tập và nghề nghiệp)
+## Learning & Career Navigator (Định hướng học tập, nghề nghiệp & Đánh giá năng lực)
 
-Giúp nhân viên biết cần học gì và có thể đi đâu trong tập đoàn. Gộp feature gốc 4, 5.
+Giúp nhân viên phát triển năng lực, thực thi lộ trình phát triển cá nhân (IDP/PIP) và khám phá cơ hội trong tập đoàn; đồng thời quản lý hệ thống kiểm tra đánh giá năng lực tự động qua LMS. Gộp feature gốc 4, 5.
 
+- [AI] Quản lý & thực thi Kế hoạch phát triển cá nhân IDP (cán bộ nguồn) & PIP (90 ngày)
+  - Tiếp nhận kết quả đánh giá và xếp loại trực tiếp từ Performance Calibration Engine (UC-08)
+  - **Nhân sự loại A (Xuất sắc):** Thiết lập lộ trình IDP (Individual Development Plan) cán bộ nguồn / kế nhiệm (Succession Pipeline); mở cơ hội fast-track thăng tiến, giao dự án trọng điểm, ghép cặp mentor cấp lãnh đạo (BU Head / Technical Director)
+  - **Nhân sự loại C (Cần cải thiện):** Thiết lập bản cam kết kế hoạch cải thiện hiệu suất PIP (Performance Improvement Plan) 90 ngày; trích xuất chính xác 3 điểm yếu lớn nhất và gán các khóa đào tạo bắt buộc kèm mốc rà soát (Check-in 30-60-90 ngày)
 - [AI] Phân tích skill gap
-  - So hồ sơ kỹ năng với yêu cầu của vai trò mục tiêu
+  - So hồ sơ kỹ năng với yêu cầu của vai trò mục tiêu hoặc yêu cầu cán bộ nguồn
 - [AI] Gợi ý khóa học, lộ trình, mentor
-  - Đề xuất thứ tự học kèm lý do
-  - Khóa có phí cần manager duyệt
+  - Đề xuất thứ tự học kèm lý do; khóa có phí cần manager duyệt
+- [AI] AI Adaptive Assessment Generator (Động cơ sinh đề thi & kiểm tra năng lực qua LMS)
+  - **Đề test mốc hoàn thành lộ trình (Milestone Checkpoint Assessment):** Tự động sinh đề kiểm tra thực hành / trắc nghiệm tình huống sau mỗi module của IDP hoặc PIP; đẩy qua LMS để nhân viên làm bài; xác nhận đạt chuẩn trước khi nghiệm thu đóng skill gap
+  - **Đề test định kỳ chuẩn hóa năng lực công ty (Periodic Competency Benchmark):** Định kỳ 6 tháng/1 năm, AI tự động sinh bộ đề benchmark chuyên môn theo từng domain/role (Backend, Cloud, Data, Design...); đẩy trực tiếp qua LMS. Kết quả làm bài tự động cập nhật độ tin cậy của kỹ năng trong Bản đồ kỹ năng (UC-12)
 - [AI] Gợi ý vị trí và dự án nội bộ
-  - Xếp hạng cơ hội theo kỹ năng và nguyện vọng
-  - Việc tìm kiếm không lộ cho manager hiện tại
-- [Người] Bày tỏ quan tâm, theo dõi trạng thái
-  - Nhân viên quyết định ứng tuyển; bên nhận quyết định tiếp nhận
+  - Xếp hạng cơ hội theo kỹ năng và nguyện vọng; tìm kiếm riêng tư không lộ cho manager hiện tại
+- [Người] Quản lý & Mentor nghiệm thu mốc hoàn thành
+  - Nhân viên chủ động học; Quản lý/Mentor kiểm tra kết quả bài test checkpoint từ LMS và nghiệm thu mốc IDP/PIP
 
 ## Talent Acquisition Copilot (Trợ lý tuyển dụng)
 
-Giảm thời gian sàng lọc cho Recruiter. Feature gốc 7.
+Giảm thời gian sàng lọc và chuẩn hóa đánh giá đầu vào cho Recruiter. Feature gốc 7.
 
 - [AI] Soạn JD
   - Nháp JD từ yêu cầu tuyển, tách tiêu chí bắt buộc và ưu tiên
 - [AI] Phân tích và xếp hạng CV
   - Chấm theo từng tiêu chí, dẫn đoạn CV làm bằng chứng
   - Không dùng tuổi, giới tính, ảnh; không tự loại hồ sơ
+- [AI] Sinh đề thi test ứng viên thích ứng theo từng role (Candidate Adaptive Assessment)
+  - Đọc JD và bài toán kỹ thuật thực tế của dự án để tự động tạo đề test chuyên môn (coding, system design, case study) phù hợp với cấp bậc ứng tuyển
+  - Tự động chấm điểm bài test sơ loại, phân tích tư duy giải quyết vấn đề và cung cấp báo cáo năng lực khách quan trước vòng phỏng vấn
 - [AI] Tổng hợp feedback phỏng vấn
   - Gom nhận xét của người phỏng vấn theo tiêu chí
 - [Người] Recruiter quyết định shortlist
   - Quyết định khác đề xuất được ghi lại để đánh giá AI
 
-## Performance & Manager Copilot (Trợ lý đánh giá và quản lý đội nhóm)
+## Performance Calibration & Merit Planning Engine (Hệ thống điều phối đánh giá, cân bằng phân phối chuẩn & phân bổ quỹ thưởng)
 
-Hỗ trợ manager đánh giá và vận hành đội nhóm. Gộp feature gốc 8, 14.
+Hỗ trợ manager đánh giá dựa trên bằng chứng, điều phối họp 1:1, đồng thời hỗ trợ Hội đồng HR (HR Committee) giải quyết bài toán cân bằng phân phối chuẩn toàn tập đoàn và tối ưu hóa ngân sách quỹ thưởng. Gộp feature gốc 8, 14.
 
-- [AI] Tổng hợp bằng chứng đánh giá
-  - Gom mục tiêu, kết quả, feedback cả kỳ theo từng mục tiêu
-- [AI] Soạn nháp nhận xét
-  - Mỗi ý gắn với bằng chứng có nguồn
-- [AI] Chuẩn bị 1:1, trích action items
-  - Tóm tắt workload, OT, việc còn dở từ lần trước
-  - Không suy đoán ý định nghỉ việc
-- [Người] Manager tự xếp loại
-  - AI không đề xuất điểm, xếp loại hay mức thưởng
+- [AI] Evidence Synthesizer (Tổng hợp bằng chứng cả năm)
+  - Gom toàn bộ dữ liệu 1 năm: KPI/OKR, task Jira/GitHub, đánh giá 360, khen thưởng/kỷ luật
+  - Khắc phục triệt để Recency Bias (thiên kiến chỉ nhớ 2 tuần gần nhất, bỏ quên 11 tháng trước)
+  - Mỗi nhận định gắn trực tiếp với dẫn chứng có nguồn và mốc thời gian cụ thể
+- [AI] Soạn nháp nhận xét & chuẩn bị 1:1
+  - Soạn nháp đánh giá theo từng mục tiêu dựa trên hồ sơ bằng chứng
+  - Chuẩn bị agenda 1:1, tóm tắt workload, OT, trích xuất action items cần theo dõi
+- [AI] Bias & Outlier Detector (Phát hiện lệch chuẩn & lạm phát điểm số)
+  - Đo lường độ lệch chuẩn đánh giá giữa các phòng ban: phát hiện quản lý dễ dãi (chấm 90% loại A) vs quản lý quá khắt khe (chỉ chấm 20% loại A)
+  - Phân tích tương quan giữa điểm đánh giá của quản lý và output thực tế trên hệ thống
+  - Gắn cờ cảnh báo các trường hợp ngoại lệ (Edge Cases): ví dụ nhân viên được chấm A nhưng đóng góp thực tế thấp hơn 30% mặt bằng chung loại A của khối
+- [AI] Calibration Optimizer (Thuật toán tối ưu hóa phân phối chuẩn)
+  - Giải bài toán tối ưu ép kết quả về đường cong chuẩn (Bell Curve: ví dụ 10% A, 70% B, 20% C)
+  - Đề xuất phương án dịch chuyển xếp loại công bằng dựa trên trọng số đóng góp thực tế xuyên phòng ban
+- [AI] Merit Simulator (Mô phỏng tăng lương & phân bổ quỹ thưởng)
+  - Đề xuất ma trận lương thưởng (Merit Matrix) theo xếp loại sau calibration và compa-ratio
+  - Kiểm soát nghiêm ngặt theo trần ngân sách tài chính (Hard budget ceiling), không để vỡ quỹ thưởng hàng chục/hàng trăm tỉ đồng
+- [Người] HITL Calibration & Merit Dashboard (Hội đồng HR phê duyệt trực quan)
+  - AI không tự quyết định xếp loại hay tiền thưởng; AI đóng vai trò người phản biện độc lập
+  - Dashboard trực quan cho phép Hội đồng HR (HRBP, BU Head, CHRO) kéo-thả điều chỉnh xếp loại và xem tác động ngân sách realtime
+  - Hội đồng HR chỉ cần tập trung can thiệp các trường hợp ngoại lệ (Edge Cases) do AI gắn cờ cảnh báo, không phải rà soát thủ công hàng nghìn hồ sơ
+- [AI] Auto-generator (Tự động sinh thư kết quả & kế hoạch phát triển IDP/PIP)
+  - Tự động sinh thư thông báo kết quả đánh giá và quyết định lương thưởng minh bạch cho từng nhân viên
+  - Tích hợp trực tiếp vào lộ trình phát triển nhân sự (kết nối với Learning & Career Navigator / UC-04):
+    - Nhân sự loại A: Gợi ý lộ trình đào tạo cán bộ nguồn, quy hoạch kế nhiệm và dự án trọng điểm
+    - Nhân sự loại C: Trích xuất đúng 3 điểm yếu lớn nhất trong năm và lập bản cam kết kế hoạch cải thiện hiệu suất (PIP) trong 90 ngày kèm mốc rà soát
 
 ## Payroll & Attendance Intelligence (Phân tích công và lương)
 

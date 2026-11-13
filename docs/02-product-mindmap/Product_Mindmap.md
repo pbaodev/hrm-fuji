@@ -9,24 +9,30 @@
 
 ## Learning & Career Navigator
 
-- [AI] Phân tích skill gap
-- [AI] Gợi ý khóa học, lộ trình, mentor
-- [AI] Gợi ý vị trí và dự án nội bộ
-- Bày tỏ quan tâm, theo dõi trạng thái
+- [AI] Quản lý & thực thi Kế hoạch phát triển cá nhân IDP (cán bộ nguồn/kế nhiệm) & PIP (cải thiện hiệu suất 90 ngày)
+- [AI] Phân tích skill gap & gợi ý lộ trình học, mentor
+- [AI] Sinh bài kiểm tra mốc lộ trình (Milestone Checkpoint Test) qua LMS
+- [AI] Đề thi test định kỳ chuẩn hóa năng lực nhân sự đồng bộ qua LMS
+- [AI] Gợi ý vị trí, dự án nội bộ & lộ trình thăng tiến (Fast-track)
+- Nhân viên chọn lộ trình, quản lý duyệt và nghiệm thu mốc hoàn thành
 
 ## Talent Acquisition Copilot
 
 - [AI] Soạn JD
 - [AI] Phân tích và xếp hạng CV
+- [AI] Sinh đề thi test ứng viên thích ứng theo từng role (Candidate Assessment)
 - [AI] Tổng hợp feedback phỏng vấn
 - Recruiter quyết định shortlist
 
-## Performance & Manager Copilot
+## Performance Calibration & Merit Planning Engine
 
-- [AI] Tổng hợp bằng chứng đánh giá
-- [AI] Soạn nháp nhận xét
-- [AI] Chuẩn bị 1:1, trích action items
-- Manager tự xếp loại
+- [AI] Evidence Synthesizer: Tổng hợp hiệu suất cả năm từ KPI/OKR, Jira/GitHub, Đánh giá 360, Khen thưởng/Kỷ luật
+- [AI] Soạn nháp nhận xét & chuẩn bị 1:1, trích action items
+- [AI] Bias & Outlier Detector: Phát hiện lệch chuẩn đánh giá & lạm phát điểm số giữa các phòng ban
+- [AI] Calibration Optimizer: Tối ưu hóa phân phối chuẩn Bell Curve
+- [AI] Merit Simulator: Đề xuất tăng lương & phân bổ quỹ thưởng theo trần ngân sách tài chính
+- [Người] HITL Dashboard: Hội đồng HR duyệt ngoại lệ, điều chỉnh trực quan & xem tác động ngân sách realtime
+- [AI] Auto-generator: Sinh thư kết quả & kế hoạch phát triển cá nhân IDP (cán bộ nguồn) / PIP (cải thiện 90 ngày)
 
 ## Payroll & Attendance Intelligence
 

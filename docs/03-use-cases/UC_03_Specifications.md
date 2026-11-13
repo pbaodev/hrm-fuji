@@ -159,50 +159,63 @@ Mục lục:
 
 ------------------------------------------------------------------------
 
-## UC-04. Lập lộ trình học theo skill gap
+## UC-04. Lập & thực thi lộ trình phát triển cá nhân (IDP / PIP) kèm bài kiểm tra thích ứng qua LMS
 
 | Mục | Nội dung |
 |---|---|
-| Feature nguồn | 4. AI Learning & Skill Growth Coach |
-| Mục tiêu | Nhân viên biết mình thiếu kỹ năng gì cho vai trò mục tiêu và có kế hoạch học cụ thể |
+| Feature nguồn | 4. AI Learning & Skill Growth Coach (kết hợp Career Navigator) |
+| Mục tiêu | Vận hành và hiện thực hóa kế hoạch phát triển cá nhân IDP (cán bộ nguồn/kế nhiệm) cho nhân sự xuất sắc, kế hoạch cải thiện hiệu suất PIP 90 ngày cho nhân sự cần hỗ trợ, hoặc lộ trình đóng skill gap theo nguyện vọng; tích hợp động cơ sinh đề thi test checkpoint qua LMS để xác thực năng lực thực chất |
 | Actor chính | Employee |
-| Actor phụ | Line Manager, Mentor |
-| Hệ thống liên quan | Hồ sơ kỹ năng (UC-12), LMS, danh mục vai trò và yêu cầu kỹ năng |
-| Trigger | Nhân viên chọn một vai trò mục tiêu, hoặc được mời từ UC-05 hay UC-13 khi có skill gap |
-| Tiền điều kiện | Nhân viên có hồ sơ kỹ năng; vai trò mục tiêu có yêu cầu kỹ năng được định nghĩa |
-| Hậu điều kiện | Lộ trình học được lưu, có mốc thời gian và gắn với khóa học trong LMS |
-| Bảo đảm tối thiểu | Không ghi danh khóa học có phí khi chưa được duyệt |
+| Actor phụ | Line Manager, Mentor, L&D Specialist, HRBP |
+| Hệ thống liên quan | Hồ sơ kỹ năng (UC-12), LMS, Hệ thống thi & kiểm tra trực tuyến, HRIS, Kết quả đánh giá hiệu suất (UC-08) |
+| Trigger | Tự động kích hoạt từ phiên Year-end Calibration (UC-08); hoặc nhân viên/quản lý chủ động khởi tạo lộ trình phát triển |
+| Tiền điều kiện | Nhân viên có hồ sơ kỹ năng trên hệ thống; hoặc có kết quả xếp loại hiệu suất và danh mục kỹ năng chuẩn của vị trí mục tiêu |
+| Hậu điều kiện | Lộ trình được lưu, gắn với các khóa học LMS, có mốc thời gian rõ ràng (30-60-90 ngày); các bài test checkpoint được sinh tự động; kết quả kiểm tra được cập nhật thành bằng chứng xác thực trong UC-12 |
+| Bảo đảm tối thiểu | Không ghi danh khóa học có phí khi chưa có phê duyệt; các bài kiểm tra được chuẩn hóa và lưu vết bài làm minh bạch |
 
 **Luồng chính**
 
-1. Nhân viên chọn vai trò hoặc cơ hội mục tiêu.
-2. Hệ thống so sánh kỹ năng hiện có với yêu cầu và liệt kê gap theo mức độ.
-3. AI đề xuất khóa học, hoạt động thực hành, mentor và thứ tự học, kèm lý do cho từng đề xuất.
-4. Nhân viên điều chỉnh và chọn.
-5. Hệ thống lưu lộ trình và ghi danh các khóa đã được cấp sẵn.
-6. Khi nhân viên hoàn thành một mục, hồ sơ kỹ năng nhận thêm bằng chứng loại "đã học" (UC-12).
+1. **Tiếp nhận mục tiêu hoặc chỉ định từ kỳ đánh giá (UC-08):**
+   - **Nhân sự loại A (Xuất sắc):** Hệ thống nạp kế hoạch **IDP (Individual Development Plan)** cán bộ nguồn / kế nhiệm, định hướng các mốc thăng tiến (Fast-track), ghép cặp mentor cấp lãnh đạo (BU Head / Technical Director) và giao dự án trọng điểm.
+   - **Nhân sự loại C (Cần cải thiện):** Hệ thống nạp kế hoạch **PIP (Performance Improvement Plan) 90 ngày**, trích xuất đúng 3 điểm yếu lớn nhất và gán các khóa đào tạo bắt buộc cùng các mốc rà soát (Check-in 30-60-90 ngày).
+   - **Nhân sự tự nguyện:** Nhân viên tự chọn vai trò mục tiêu để thăng cấp hoặc chuẩn bị luân chuyển nội bộ.
+2. **AI phân tích skill gap & thiết lập lộ trình:**
+   - AI so sánh hồ sơ năng lực hiện tại với yêu cầu vai trò đích, chia lộ trình thành các chặng (milestones), đề xuất thứ tự học tập, tài liệu thực hành và mentor phù hợp.
+3. **Nhân viên xác nhận & ghi danh:**
+   - Nhân viên xem xét, điều chỉnh và xác nhận lộ trình; hệ thống tự động ghi danh các khóa học nội bộ trên LMS.
+4. **AI sinh bài kiểm tra mốc lộ trình (Milestone Checkpoint Test):**
+   - Sau khi hoàn thành một module hoặc khóa học, AI tự động sinh đề kiểm tra thích ứng (Adaptive Assessment) gồm câu hỏi tình huống thực tế, bài tập thiết kế hệ thống hoặc bài test coding đo lường đúng kỹ năng vừa học.
+   - Đề thi được đồng bộ trực tiếp sang LMS để nhân viên làm bài.
+5. **Đánh giá & xác thực năng lực vào Bản đồ kỹ năng (UC-12):**
+   - Hệ thống tự động chấm điểm bài làm trên LMS.
+   - Nếu đạt chuẩn ($\ge 80\%$), hệ thống đánh dấu hoàn thành mốc lộ trình và tự động nâng cấp độ tin cậy của kỹ năng trong UC-12 thành bằng chứng "Đã kiểm tra qua bài test LMS".
+6. **Theo dõi tiến độ & Báo cáo mốc định kỳ:**
+   - **Với PIP:** Hệ thống tự động nhắc lịch check-in 30-60-90 ngày cho Line Manager và HRBP; nếu sau 90 ngày không vượt qua bài kiểm tra chuẩn, chuyển sang quy trình xử lý nhân sự.
+   - **Với IDP:** Báo cáo mức độ sẵn sàng kế nhiệm (Readiness Score) cho Hội đồng HR và BU Head.
+7. **Kỳ thi chuẩn hóa năng lực định kỳ toàn công ty (Periodic Competency Benchmark):**
+   - Định kỳ 6 tháng hoặc 1 năm, AI tự động tạo các bộ đề thi benchmark chuẩn hóa theo từng role/level (Junior, Mid, Senior, Lead) chuyển qua LMS cho toàn thể nhân sự làm bài, tạo cơ sở dữ liệu khách quan cho các kỳ đánh giá tiếp theo.
 
 **Luồng thay thế và ngoại lệ**
 
-- **2a.** Hồ sơ kỹ năng thiếu hoặc đã cũ: hệ thống đề nghị cập nhật trước (UC-12).
-- **3a.** Không có khóa nội bộ phù hợp: AI nói rõ và gợi ý nguồn bên ngoài cần duyệt ngân sách.
-- **3b.** Mentor từ chối hoặc hết chỗ: hệ thống đề xuất người khác.
-- **5a.** Khóa học có phí hoặc chiếm giờ làm việc: hệ thống gửi Line Manager duyệt.
+- **2a.** Nhân viên chưa đồng bộ đủ lịch sử dự án: AI yêu cầu cập nhật hồ sơ kỹ năng UC-12 trước khi phân tích gap.
+- **4a.** Nhân viên không đạt bài kiểm tra checkpoint ($< 80\%$): AI phân tích các câu trả lời sai, chỉ rõ điểm hổng lý thuyết/thực hành và yêu cầu ôn tập lại module trước khi cho phép thi lại lần 2.
+- **5a.** Khóa học có chi phí ngoài ngân sách: Hệ thống chuyển yêu cầu phê duyệt ngân sách cho Line Manager và Finance qua UC-11.
+- **6a.** Nhân viên trong diện PIP có tiến bộ vượt bậc sau 60 ngày: Line Manager có thể đề xuất kết thúc sớm PIP có sự đồng thuận của HRBP.
 
 **Quy tắc nghiệp vụ**
 
-- Hoàn thành khóa học chỉ được ghi là bằng chứng "đã học", không tự nâng mức thành thạo.
-- Chỉ đề xuất mentor trong số những người đã đăng ký làm mentor.
-- Skill gap chỉ hiển thị cho nhân viên và manager trực tiếp.
+- Hoàn thành khóa học đơn thuần chỉ được tính là bằng chứng "Đã học"; chỉ khi vượt qua bài kiểm tra checkpoint trên LMS mới được xác thực năng lực đóng skill gap.
+- Đề thi test sinh bởi AI phải bám sát ngân hàng năng lực chuẩn của tập đoàn, không dùng câu hỏi mẹo hoặc vượt quá phạm vi vai trò.
+- Kết quả bài test định kỳ và tiến độ PIP/IDP được bảo mật nghiêm ngặt, chỉ nhân viên, Line Manager trực tiếp và HRBP phụ trách khối có quyền xem.
 
 **Phân vai AI và rules**
 
-- AI: phân tích gap, gợi ý, giải thích.
-- Rules/workflow: ngân sách, duyệt, ghi danh.
+- **AI:** Phân tích gap, thiết kế lộ trình IDP/PIP, sinh đề thi test checkpoint và đề thi benchmark định kỳ qua LMS, tự động chấm điểm và phân tích lỗ hổng kiến thức.
+- **Rules/workflow:** Ngân sách đào tạo, luồng duyệt chi phí, lịch check-in 30-60-90 ngày, ghi nhận chứng chỉ trên LMS.
 
-**Điểm con người quyết định:** nhân viên chọn lộ trình; Line Manager duyệt chi phí và thời gian.
+**Điểm con người quyết định:** Nhân viên chọn lộ trình; Line Manager duyệt chi phí và chủ trì các buổi check-in PIP/IDP; Mentor nghiệm thu kết quả thực hành.
 
-**Chỉ số đo:** tỷ lệ lộ trình được bắt đầu và hoàn thành; số gap được đóng có bằng chứng thực hành.
+**Chỉ số đo:** Tỷ lệ hoàn thành lộ trình IDP/PIP đúng hạn; điểm trung bình bài test checkpoint qua LMS; tỷ lệ nhân sự loại C cải thiện thành công sau PIP; tỷ lệ nhân sự loại A sẵn sàng kế nhiệm trong 12 tháng.
 
 ------------------------------------------------------------------------
 
@@ -304,102 +317,123 @@ Mục lục:
 
 ------------------------------------------------------------------------
 
-## UC-07. Sàng lọc và xếp hạng hồ sơ ứng viên cho một vị trí
+## UC-07. Sàng lọc hồ sơ & sinh đề test ứng viên theo role (Candidate Adaptive Assessment)
 
 | Mục | Nội dung |
 |---|---|
 | Feature nguồn | 7. AI Talent Acquisition Copilot |
-| Mục tiêu | Recruiter chốt shortlist nhanh hơn với căn cứ rõ ràng cho từng hồ sơ |
+| Mục tiêu | Recruiter sàng lọc hồ sơ nhanh chóng với căn cứ rõ ràng, đồng thời tự động sinh đề thi test kỹ thuật thích ứng theo role để kiểm chứng năng lực thực chất của ứng viên trước vòng phỏng vấn |
 | Actor chính | Recruiter |
-| Actor phụ | Hiring Manager |
-| Hệ thống liên quan | ATS |
-| Trigger | Một vị trí có hồ sơ mới cần sàng lọc |
-| Tiền điều kiện | Yêu cầu tuyển đã được duyệt; JD có tiêu chí bắt buộc và tiêu chí ưu tiên; ứng viên đã đồng ý cho xử lý dữ liệu |
-| Hậu điều kiện | Mỗi hồ sơ có bản đánh giá theo tiêu chí kèm bằng chứng từ CV; quyết định shortlist của Recruiter được ghi lại |
-| Bảo đảm tối thiểu | Không hồ sơ nào bị loại tự động |
+| Actor phụ | Hiring Manager, Ứng viên (Candidate) |
+| Hệ thống liên quan | ATS, LMS / Nền tảng kiểm tra trực tuyến, Ngân hàng năng lực kỹ thuật |
+| Trigger | Một vị trí có hồ sơ mới cần sàng lọc hoặc ứng viên nộp hồ sơ |
+| Tiền điều kiện | Yêu cầu tuyển đã được duyệt; JD có tiêu chí bắt buộc và ưu tiên; ứng viên đã đồng ý cho xử lý dữ liệu |
+| Hậu điều kiện | Mỗi hồ sơ có bản đánh giá theo tiêu chí kèm bằng chứng từ CV; ứng viên có kết quả bài test kỹ thuật sơ loại do AI chấm; quyết định shortlist của Recruiter được ghi lại |
+| Bảo đảm tối thiểu | Không hồ sơ nào bị loại tự động; bài test bám sát đúng yêu cầu công việc của role |
 
 **Luồng chính**
 
 1. Recruiter mở vị trí và xác nhận bộ tiêu chí sàng lọc.
-2. AI trích xuất thông tin có cấu trúc từ CV: kỹ năng, kinh nghiệm, chứng chỉ.
-3. Rules kiểm tra các tiêu chí bắt buộc.
-4. AI đánh giá mức khớp theo từng tiêu chí, dẫn đoạn CV làm bằng chứng và nêu các điểm chưa rõ cần hỏi thêm.
-5. Hệ thống hiển thị danh sách xếp hạng kèm giải thích.
-6. Recruiter rà soát, điều chỉnh và quyết định shortlist.
-7. Hệ thống cập nhật trạng thái trong ATS và ghi lại các trường hợp Recruiter quyết định khác đề xuất.
-8. Hiring Manager nhận shortlist.
+2. AI trích xuất thông tin có cấu trúc từ CV: kỹ năng, kinh nghiệm, dự án, chứng chỉ.
+3. Rules kiểm tra các tiêu chí bắt buộc (năm kinh nghiệm, địa điểm làm việc).
+4. AI đánh giá mức khớp theo từng tiêu chí, dẫn đoạn CV làm bằng chứng và nêu các điểm chưa rõ cần làm rõ.
+5. **AI sinh đề thi test ứng viên theo role (Candidate Adaptive Assessment):**
+   - Dựa trên JD, yêu cầu dự án thực tế và kinh nghiệm trong CV ứng viên, AI tự động tạo bộ đề kiểm tra thích ứng (bài test trắc nghiệm kiến trúc hệ thống, bài tập coding giải thuật, hoặc bài test case study tình huống thực chiến).
+   - Hệ thống gửi link làm bài trực tuyến qua Test Portal cho ứng viên.
+6. **Ứng viên làm bài & Hệ thống chấm điểm tự động:**
+   - Ứng viên hoàn thành bài test trong thời gian quy định; AI tự động chấm điểm, phân tích độ sạch của code, tư duy giải quyết vấn đề và phát hiện gian lận.
+7. Hệ thống hiển thị danh sách xếp hạng tổng hợp (kết hợp điểm CV và kết quả bài test kỹ thuật).
+8. Recruiter rà soát toàn diện và quyết định danh sách phỏng vấn (Shortlist).
+9. Hiring Manager nhận shortlist kèm báo cáo chi tiết về kết quả bài test của từng ứng viên.
 
 **Luồng thay thế và ngoại lệ**
 
 - **2a.** CV không đọc được hoặc thiếu thông tin: hệ thống gắn cờ để rà soát thủ công.
-- **2b.** CV chứa văn bản ẩn hoặc câu lệnh nhằm thao túng kết quả: hệ thống bỏ qua câu lệnh và gắn cờ cho Recruiter.
-- **4a.** Tiêu chí trong JD mơ hồ: hệ thống yêu cầu Recruiter làm rõ trước khi chấm.
-- **6a.** Recruiter không đồng ý với xếp hạng: hệ thống ghi lý do để dùng cho việc đánh giá chất lượng đề xuất.
+- **2b.** CV chứa văn bản ẩn hoặc câu lệnh prompt injection nhằm thao túng kết quả: hệ thống bỏ qua câu lệnh và gắn cờ cảnh báo cho Recruiter.
+- **5a.** Ứng viên cấp Senior/Lead: AI tự động chuyển đổi từ dạng test trắc nghiệm sang bài tập thiết kế hệ thống (System Design Case Study) để phản ánh đúng tầm chuyên gia.
+- **6a.** Ứng viên không nộp bài đúng hạn: Hệ thống gửi thông báo nhắc nhở 1 lần trước khi chuyển hồ sơ sang trạng thái chờ xem xét.
+- **8a.** Recruiter không đồng ý với xếp hạng: hệ thống ghi lý do để đánh giá và cải tiến mô hình.
 
 **Quy tắc nghiệp vụ**
 
-- Không dùng tuổi, giới tính, ảnh, tình trạng hôn nhân, quê quán làm tín hiệu.
-- AI không tự loại hồ sơ; mỗi nhận định phải dẫn được bằng chứng trong CV.
-- Định kỳ kiểm tra chênh lệch tỷ lệ shortlist giữa các nhóm ứng viên.
+- Không dùng tuổi, giới tính, ảnh, tình trạng hôn nhân, quê quán làm tín hiệu đánh giá.
+- AI không tự động loại ứng viên; kết quả test chỉ là căn cứ tham khảo hỗ trợ Recruiter và Hiring Manager ra quyết định.
+- Đề thi test phải được sinh ngẫu nhiên theo ma trận kỹ năng của role để chống gian lận và rò rỉ đề thi.
 
 **Phân vai AI và rules**
 
-- AI: trích xuất, so khớp, giải thích.
-- Rules/workflow: tiêu chí bắt buộc, trạng thái hồ sơ, lưu vết quyết định.
+- **AI:** Trích xuất CV, so khớp tiêu chí, sinh đề thi test theo role, tự động chấm điểm và lập báo cáo năng lực.
+- **Rules/workflow:** Tiêu chí bắt buộc, thời gian làm bài thi, lưu vết kết quả và trạng thái hồ sơ trong ATS.
 
-**Điểm con người quyết định:** Recruiter quyết định shortlist; Hiring Manager quyết định phỏng vấn và tuyển.
+**Điểm con người quyết định:** Recruiter quyết định shortlist; Hiring Manager quyết định phỏng vấn và tuyển dụng.
 
-**Chỉ số đo:** thời gian sàng lọc mỗi vị trí; tỷ lệ Recruiter đồng ý với đề xuất; time-to-hire; chênh lệch tỷ lệ shortlist giữa các nhóm.
+**Chỉ số đo:** Thời gian sàng lọc hồ sơ; tỷ lệ ứng viên vượt qua bài test được đánh giá tốt trong phỏng vấn; time-to-hire; độ chính xác của bài test so với đánh giá chuyên môn của Hiring Manager.
 
 ------------------------------------------------------------------------
 
-## UC-08. Tổng hợp hồ sơ bằng chứng cho kỳ đánh giá
+## UC-08. Điều phối đánh giá hiệu suất, cân bằng phân phối chuẩn & phân bổ quỹ thưởng (Performance Calibration & Merit Planning Engine)
 
 | Mục | Nội dung |
 |---|---|
-| Feature nguồn | 8. AI Performance & Talent Review Copilot |
-| Mục tiêu | Manager viết đánh giá dựa trên bằng chứng của cả kỳ, không chỉ dựa vào trí nhớ về vài tuần gần nhất |
-| Actor chính | Line Manager |
-| Actor phụ | Employee, HRBP |
-| Hệ thống liên quan | HRIS (mục tiêu, đánh giá), PM, LMS, kho feedback |
-| Trigger | Kỳ đánh giá mở và manager bắt đầu đánh giá một nhân viên |
-| Tiền điều kiện | Manager là người đánh giá được chỉ định; nhân viên có mục tiêu đã đăng ký |
-| Hậu điều kiện | Có hồ sơ bằng chứng theo từng mục tiêu, truy được nguồn; manager đã viết nhận xét và xếp loại; nhân viên xem được bằng chứng đã dùng |
-| Bảo đảm tối thiểu | AI không tạo ra xếp loại hay điểm số |
+| Feature nguồn | 8. AI Performance Calibration & Merit Planning Engine |
+| Mục tiêu | Tự động hóa và chuẩn hóa toàn bộ chu trình đánh giá hiệu suất cuối năm cho tập đoàn 5.000–20.000 người: tổng hợp bằng chứng cả năm xóa bỏ Recency Bias, phát hiện lạm phát điểm số (Rating Inflation) giữa các phòng ban, tối ưu hóa phân phối chuẩn Bell Curve, mô phỏng ma trận tăng lương & thưởng theo trần ngân sách tài chính, hỗ trợ Hội đồng HR duyệt ngoại lệ HITL realtime, và tự động sinh thư kết quả kèm kế hoạch phát triển cá nhân IDP/PIP tích hợp lộ trình nhân sự |
+| Actor chính | Line Manager (đánh giá sơ bộ), Hội đồng HR / HRBP & BU Head (chủ trì calibration & duyệt ngoại lệ) |
+| Actor phụ | Employee (xem kết quả & kế hoạch IDP/PIP), Finance (xác nhận trần quỹ thưởng), CHRO (phê duyệt tập đoàn) |
+| Hệ thống liên quan | HRIS (mục tiêu OKR/KPI, đánh giá), Hệ thống quản lý công việc (Jira/GitHub commits/PRs, Project Management), Kho feedback/Đánh giá 360, Hệ thống khen thưởng & kỷ luật, Payroll/Finance |
+| Trigger | Mở kỳ Year-end Review & Merit Planning tập đoàn; hoặc Line Manager / HRBP mở phiên rà soát |
+| Tiền điều kiện | Mục tiêu năm đã đăng ký; dữ liệu công việc (Jira/GitHub), đánh giá 360 và khen thưởng đã đồng bộ; trần ngân sách quỹ thưởng và khung tỷ lệ Bell Curve (ví dụ: 10% A, 70% B, 20% C) đã được CHRO & Finance phê duyệt |
+| Hậu điều kiện | Kết quả đánh giá được chuẩn hóa theo Bell Curve; tổng chi phí thưởng & tăng lương nằm nghiêm ngặt trong trần ngân sách; mọi điều chỉnh của Hội đồng HR có lưu vết kiểm toán (Audit Trail); thư kết quả và kế hoạch phát triển IDP/PIP được tự động gửi cho từng nhân viên, kết nối trực tiếp vào lộ trình học tập UC-04 |
+| Bảo đảm tối thiểu | AI đóng vai trò người phản biện độc lập và đề xuất tối ưu; AI không tự ý chốt xếp loại hay sửa lương/thưởng của bất kỳ ai mà không có phê duyệt của con người (HITL). Ngân sách quỹ thưởng không bao giờ vượt trần tài chính đã khóa |
 
-**Luồng chính**
+**Luồng chính (AI Automation Workflow 7 bước)**
 
-1. Manager chọn nhân viên và kỳ đánh giá.
-2. Hệ thống thu thập mục tiêu, kết quả đã ghi nhận, feedback đã gửi, đóng góp trong dự án và kết quả học tập.
-3. AI sắp xếp bằng chứng theo từng mục tiêu, tóm tắt và chỉ ra mục tiêu còn thiếu bằng chứng.
-4. Manager rà soát, loại bỏ hoặc bổ sung bằng chứng.
-5. Theo yêu cầu của manager, AI soạn nháp nhận xét, mỗi ý gắn với bằng chứng.
-6. Manager chỉnh sửa, tự xếp loại và gửi.
-7. Nhân viên xem đánh giá cùng bằng chứng và phản hồi.
-8. HRBP dùng hồ sơ cho phiên calibration.
+1. **Thu thập dữ liệu hiệu suất 1 năm (Dữ liệu đa nguồn):** Hệ thống đồng bộ toàn diện dữ liệu 12 tháng: KPI/OKR, task Jira, GitHub commits/PRs, kết quả đánh giá 360 (peer review, feedback chéo), lịch sử khen thưởng và kỷ luật.
+2. **AI Evidence Synthesizer (Tổng hợp hiệu suất cả năm):** AI phân tích, đối chiếu tiến độ hoàn thành so với cam kết ban đầu, tóm tắt hiệu suất cả năm của từng nhân sự kèm dẫn chứng truy xuất nguồn (loại bỏ triệt để Recency Bias). AI hỗ trợ Line Manager soạn nháp đánh giá; Line Manager rà soát và gửi xếp loại sơ bộ.
+3. **AI Bias & Outlier Detector (Phát hiện lệch chuẩn & lạm phát điểm):** AI quét toàn bộ kết quả sơ bộ giữa các phòng ban để phát hiện độ lệch chuẩn:
+   - Nhận diện lạm phát điểm số (Rating Inflation): phòng ban quản lý dễ dãi chấm 90% loại A dù sản lượng/output thực tế trung bình so với khối.
+   - Nhận diện phòng ban khắt khe: quản lý chỉ chấm 20% loại A dù đội ngũ có nhiều đóng góp nổi bật.
+   - Gắn cờ cảnh báo các trường hợp ngoại lệ (Edge Cases): ví dụ nhân viên X được quản lý chấm loại A nhưng bằng chứng đóng góp thực tế trên hệ thống thấp hơn 30% so với mặt bằng chung loại A của khối, hoặc nhân sự đóng góp vượt trội nhưng bị đánh giá thấp do thiên kiến cá nhân.
+4. **AI Calibration Optimizer (Thuật toán tối ưu hóa phân phối chuẩn Bell Curve):** Thuật toán giải bài toán tối ưu ràng buộc (Constrained Optimization) để đề xuất phương án dịch chuyển kết quả toàn công ty/khối về đường cong chuẩn (Bell Curve: ví dụ 10% A, 70% B, 20% C) dựa trên trọng số bằng chứng khách quan, giảm thiểu xung đột so bì giữa các phòng ban.
+5. **AI Merit Simulator (Mô phỏng tăng lương & thưởng theo ngân sách tài chính):** AI đề xuất ma trận thưởng (Merit Matrix) dựa trên xếp loại sau calibration kết hợp với vị trí lương hiện tại (compa-ratio). Tự động mô phỏng các kịch bản phân bổ quỹ thưởng sao cho tổng ngân sách luôn $\le$ Trần ngân sách tài chính (Hard budget ceiling).
+6. **HITL Dashboard cho Hội đồng HR duyệt trực quan & xem tác động ngân sách realtime:**
+   - Hội đồng HR (HRBP, BU Head, Line Manager) mở Dashboard điều phối trực quan.
+   - Thay vì phải rà soát thủ công hàng nghìn hồ sơ, Hội đồng HR chỉ cần tập trung xem xét các trường hợp ngoại lệ (Edge Cases) do AI gắn cờ cảnh báo kèm luận điểm phản biện độc lập.
+   - Hội đồng HR kéo-thả điều chỉnh xếp loại nhân sự; Dashboard lập tức cập nhật lại phân bố Bell Curve và tác động dòng tiền ngân sách realtime.
+   - Khi đạt đồng thuận, BU Head và HRBP ký duyệt kết quả.
+7. **AI Auto-generator sinh thư thông báo kết quả & kế hoạch phát triển cá nhân IDP/PIP:**
+   - AI tự động sinh thư thông báo kết quả đánh giá và quyết định lương thưởng cho từng nhân viên với văn phong chuẩn mực, minh bạch dẫn chứng.
+   - **Tích hợp trực tiếp vào lộ trình nhân sự (kết nối với UC-04 Learning & Skill Growth Coach):**
+     - **Nhân sự loại A (Xuất sắc):** Gợi ý kế hoạch phát triển cá nhân (IDP - Individual Development Plan), quy hoạch cán bộ nguồn / kế nhiệm (Succession Planning), định hướng phụ trách dự án trọng điểm hoặc lộ trình đào tạo lãnh đạo.
+     - **Nhân sự loại C (Cần cải thiện):** AI tự động trích xuất đúng 3 điểm yếu lớn nhất trong năm và lập bản cam kết kế hoạch cải thiện hiệu suất (PIP - Performance Improvement Plan) trong 90 ngày kèm các mốc rà soát (Check-in 30-60-90 ngày).
 
 **Luồng thay thế và ngoại lệ**
 
-- **2a.** Nguồn chứa dữ liệu nhạy cảm (sức khỏe, lý do nghỉ ốm): hệ thống loại khỏi hồ sơ.
-- **3a.** Bằng chứng mỏng hoặc dồn về cuối kỳ: hệ thống cảnh báo và gợi ý thu thêm feedback.
-- **4a.** Nhân viên bổ sung tự đánh giá và bằng chứng của mình.
-- **7a.** Nhân viên không đồng ý: mở luồng phản hồi theo quy trình đánh giá.
+- **3a. Phòng ban có hiệu suất đột biến thực tế:** Trưởng phòng bảo vệ kết quả chấm cao; Hội đồng HR xem xét hồ sơ bằng chứng do AI tổng hợp và quyết định nới biên độ Bell Curve cho phòng ban đó.
+- **5a. Tổng ngân sách mô phỏng chạm trần tài chính:** AI đề xuất kịch bản cân đối (giảm biên độ % tăng lương ở nhóm compa-ratio cao, dồn ngân sách thưởng vào top 5% xuất sắc) để đảm bảo không vỡ quỹ.
+- **6a. Quản lý không đồng ý với điều chỉnh của Hội đồng:** Line Manager đệ trình phiên giải trình (Rebuttal) kèm bằng chứng bổ sung trong vòng 48 giờ trước khi Hội đồng ra quyết định chốt.
+- **7a. Nhân viên khiếu nại kết quả:** Mở luồng phúc khảo minh bạch; hệ thống cung cấp đầy đủ nhật ký đánh giá, hồ sơ bằng chứng 1 năm và biên bản phiên calibration để đối soát.
 
 **Quy tắc nghiệp vụ**
 
-- AI không đề xuất xếp loại, điểm số hoặc mức thưởng.
-- Mọi ý trong bản nháp phải có nguồn.
-- Không dùng nội dung hội thoại với copilot hoặc dữ liệu giám sát hoạt động làm bằng chứng.
-- Thời gian nghỉ ốm, thai sản không được tính là bằng chứng bất lợi.
+- **Vai trò HITL (Human-in-the-loop):** AI không tự ý quyết định xếp loại hay mức thưởng của ai. AI đóng vai trò người phản biện độc lập: "Quản lý chấm nhân viên X loại A, nhưng bằng chứng đóng góp thực tế trên hệ thống thấp hơn 30% so với mặt bằng chung loại A của khối". Hội đồng HR chỉ việc can thiệp vào các trường hợp ngoại lệ (Edge Cases) do AI gắn cờ cảnh báo, thay vì phải ngồi rà soát tay hàng nghìn hồ sơ.
+- **Trần ngân sách tài chính là ràng buộc cứng:** Tổng ngân sách tăng lương và thưởng mô phỏng tuyệt đối không được vượt trần tài chính đã được Finance phê duyệt.
+- **Phân quyền và bảo mật dữ liệu:** Chỉ Hội đồng HR và Finance thấy dữ liệu ngân sách và compa-ratio; Line Manager chỉ thấy dữ liệu trong phòng ban phụ trách; nhân viên chỉ xem được kết quả cá nhân và bản IDP/PIP của mình.
+- **Không dùng dữ liệu nhạy cảm làm điểm trừ:** Thời gian nghỉ thai sản, điều trị bệnh hiểm nghèo không bị tính là bằng chứng bất lợi; không sử dụng dữ liệu chat riêng tư hay camera giám sát làm căn cứ hiệu suất.
 
 **Phân vai AI và rules**
 
-- AI: tổng hợp, sắp xếp, soạn nháp.
-- Rules/workflow: chu kỳ đánh giá, quyền xem, lưu vết.
+- **AI:** Evidence Synthesizer (tổng hợp dữ liệu 1 năm), Bias & Outlier Detector (phát hiện lệch chuẩn/lạm phát điểm), Calibration Optimizer (tối ưu Bell Curve), Merit Simulator (mô phỏng quỹ thưởng), Auto-generator (thư kết quả & kế hoạch IDP/PIP).
+- **Rules/workflow:** Trần ngân sách tài chính, khung tỷ lệ Bell Curve, quy tắc compa-ratio, ma trận phân quyền, luồng khiếu nại và lưu vết kiểm toán (Audit Trail).
 
-**Điểm con người quyết định:** Line Manager chịu trách nhiệm về nhận xét và xếp loại; HRBP chủ trì calibration.
+**Điểm con người quyết định:** Line Manager chấm sơ bộ; Hội đồng HR (HRBP, BU Head) thẩm định các ca ngoại lệ và phê duyệt Bell Curve; CHRO phê duyệt toàn tập đoàn; Finance xác nhận ngân sách.
 
-**Chỉ số đo:** thời gian chuẩn bị mỗi bản đánh giá; tỷ lệ nhận xét có bằng chứng; tỷ lệ khiếu nại sau đánh giá.
+**Chỉ số đo lường hiệu quả (KPIs)**
+
+- Giảm thời gian chu kỳ Year-end Review & Calibration từ 2–3 tháng xuống dưới 2 tuần.
+- Giảm 85% thời lượng các buổi họp tranh cãi giữa HR và Giám đốc khối.
+- 100% quyết định xếp loại có dẫn chứng định lượng cả năm, xóa bỏ Recency Bias.
+- 0% vượt trần ngân sách tài chính.
+- 100% nhân sự loại C có kế hoạch PIP 90 ngày cụ thể và 100% nhân sự loại A có kế hoạch phát triển kế nhiệm IDP.
 
 ------------------------------------------------------------------------
 

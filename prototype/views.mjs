@@ -86,10 +86,49 @@ export function assistant(s,v) {
 }
 
 export function learning(s,v) {
-  const courses = [{id:'course-1',title:'Kafka for Backend Engineers',time:'Tuần 1–2 · 6 giờ',desc:'Event streaming, producer và consumer. Bài thực hành xây dựng luồng thanh toán.',tag:'Ưu tiên cho Atlas',type:'01'}, {id:'course-2',title:'Cloud Architecture Essentials',time:'Tuần 3–4 · 8 giờ',desc:'Thiết kế hệ thống trên AWS, tối ưu tính sẵn sàng và quan sát hệ thống.',tag:'Nâng cao AWS',type:'02'}, {id:'course-3',title:'System Design Practice',time:'Tuần 5–6 · 4 giờ',desc:'Thực hành thiết kế hệ thống cùng mentor và phản biện quyết định kiến trúc.',tag:'Mentoring',type:'03'}];
-  return `${pageHead('EMPLOYEE AI','Bước tiếp theo của bạn','Phát triển từ năng lực hiện tại. Chọn con đường theo nguyện vọng của mình.',badge('Hồ sơ: Hoàng Nam'))}
-  <div class="learning-hero"><div><span class="eyebrow">LỘ TRÌNH DÀNH CHO BẠN</span><h2>Từ Backend Engineer<br>đến người kiến tạo nền tảng.</h2><p>6 tuần · 3 khóa học nội bộ miễn phí · Có mentor đồng hành</p><div class="inline-person">${avatar('TH','lilac')}<span>Mentor gợi ý <strong>Lê Thanh Hà</strong></span></div></div><div class="learning-art" aria-hidden="true"><span>LEARN</span><span>BUILD</span><span>GROW ↗</span></div></div>
-  <div class="section-heading"><div><h2>Bù kỹ năng, mở cơ hội</h2><p>Lộ trình mẫu cho vai trò Senior Backend Engineer tại Atlas</p></div><span class="subtle">${s.enrolled.length}/3 khóa đã đăng ký</span></div><div class="course-grid">${courses.map(c=>`<article class="card course-card"><span class="course-number">${c.type}</span>${badge(c.tag,'red')}<h3>${c.title}</h3><span class="subtle">${icon('clock',14)} ${c.time}</span><p>${c.desc}</p>${button(s.enrolled.includes(c.id)?`${icon('check',16)} Đã đăng ký`:`Đăng ký học ${icon('arrow',16)}`,'enroll',c.id,`btn full-width ${s.enrolled.includes(c.id)?'success':''}`,s.enrolled.includes(c.id)?'disabled':'')}</article>`).join('')}</div>
+  const courses = [
+    {id:'course-1',title:'Kafka for Backend Engineers',time:'Tuần 1–2 · 6 giờ',desc:'Event streaming, producer và consumer. Bài thực hành xây dựng luồng thanh toán.',tag:'Ưu tiên cho Atlas',type:'01',test:'Test Checkpoint: Kafka Architecture (LMS)'},
+    {id:'course-2',title:'Cloud Architecture Essentials',time:'Tuần 3–4 · 8 giờ',desc:'Thiết kế hệ thống trên AWS, tối ưu tính sẵn sàng và quan sát hệ thống.',tag:'Nâng cao AWS',type:'02',test:'Test Checkpoint: AWS Cloud Resilience (LMS)'},
+    {id:'course-3',title:'System Design Practice',time:'Tuần 5–6 · 4 giờ',desc:'Thực hành thiết kế hệ thống cùng mentor và phản biện quyết định kiến trúc.',tag:'Mentoring',type:'03',test:'Bài tập Capstone: Thiết kế Payment Gateway'}
+  ];
+  return `${pageHead('EMPLOYEE AI','Lộ trình phát triển & Đánh giá năng lực','Hiện thực hóa kế hoạch IDP/PIP từ kỳ đánh giá. Đề thi thích ứng đồng bộ tự động qua LMS.',badge('Lộ trình IDP · Trần Hoàng Nam'))}
+  <div class="learning-hero"><div><span class="eyebrow" style="color:#ffffff;">KẾ HOẠCH PHÁT TRIỂN CÁ NHÂN (IDP - CÁN BỘ NGUỒN)</span><h2>Từ Senior Backend Engineer<br>đến Tech Lead / System Architect.</h2><p>Tự động kích hoạt từ kết quả xếp loại A (UC-08) · 6 tuần · Đề thi checkpoint đồng bộ qua LMS · Có Mentor lãnh đạo đồng hành</p><div class="inline-person">${avatar('ĐM','peach')}<span>Mentor cấp cao: <strong>Nguyễn Đức Minh (Trưởng khối)</strong> &amp; Lê Thanh Hà</span></div></div><div class="learning-art" aria-hidden="true"><span>IDP</span><span>TEST</span><span>GROW ↗</span></div></div>
+
+  <div class="section-heading"><div><h2>Khóa học trong lộ trình &amp; Bài thi Checkpoint LMS</h2><p>Hoàn thành khóa học và vượt qua bài test checkpoint ($\ge 80\%$) để tự động xác thực kỹ năng lên UC-12</p></div><span class="subtle">${s.enrolled.length}/3 khóa đã đăng ký</span></div>
+  <div class="course-grid">${courses.map(c=>`<article class="card course-card"><span class="course-number">${c.type}</span>${badge(c.tag,'red')}<h3>${c.title}</h3><span class="subtle">${icon('clock',14)} ${c.time}</span><p>${c.desc}</p><div style="margin:8px 0;padding:6px 8px;background:#f8fafc;border-radius:4px;font-size:12px;color:#475569;"><strong>${icon('check',12)} ${c.test}</strong></div>${button(s.enrolled.includes(c.id)?`${icon('check',16)} Đã đăng ký (Mở LMS)`:`Đăng ký học &amp; Thi test ${icon('arrow',16)}`,'enroll',c.id,`btn full-width ${s.enrolled.includes(c.id)?'success':''}`,s.enrolled.includes(c.id)?'disabled':'')}</article>`).join('')}</div>
+
+  <section class="card lower-section">
+    ${cardHead('AI Adaptive Assessment Engine','Hệ thống sinh đề thi & đánh giá năng lực tự động chuyển qua LMS',badge('LMS Integrated','green'))}
+    <div class="two-columns">
+      <div class="evidence-block">
+        <span class="eyebrow">1. ĐỀ TEST ĐỊNH KỲ CHUẨN HÓA TOÀN CÔNG TY (LMS BENCHMARK)</span>
+        <div style="margin:10px 0;padding:12px;background:#f0fdf4;border-radius:6px;border-left:3px solid #16a34a;">
+          <strong>Kỳ thi Benchmark Kỹ thuật Backend 2026</strong> · <span class="badge green">Đã hoàn thành</span>
+          <p style="margin:6px 0;font-size:13px;color:#475569;">AI tự động sinh bộ đề chuẩn hóa 40 câu trắc nghiệm chuyên sâu + 1 bài code refactoring. Hoàng Nam đạt <strong>88/100 điểm</strong> (Top 8% khối). Điểm số tự động nâng cấp độ tin cậy kỹ năng Java lên Level 4 trên Bản đồ kỹ năng (UC-12).</p>
+          <small class="subtle">Kỳ benchmark tiếp theo: Tháng 05/2027 (chu kỳ 6 tháng)</small>
+        </div>
+        <span class="eyebrow" style="margin-top:14px;display:block;">2. ĐỀ TEST ỨNG VIÊN THEO ROLE (TUYỂN DỤNG UC-07)</span>
+        <div style="margin:8px 0;padding:12px;background:#f8fafc;border-radius:6px;border-left:3px solid #0284c7;">
+          <strong>Senior Backend Engineer Challenge (Atlas Project)</strong>
+          <p style="margin:6px 0;font-size:13px;color:#475569;">AI đọc trực tiếp JD &amp; bài toán hệ thống Payment Atlas để tạo đề test thích ứng (Xử lý Idempotency &amp; Race condition). Ứng viên làm bài trên Test Portal; AI tự động chấm và xuất báo cáo trước phỏng vấn.</p>
+        </div>
+      </div>
+      <div class="evidence-block">
+        <span class="eyebrow">3. CƠ CHẾ THỰC THI LỘ TRÌNH IDP (LOẠI A) &amp; PIP (LOẠI C)</span>
+        <div style="margin:10px 0;padding:10px;background:#ffffff;border:1px solid #e2e8f0;border-radius:6px;">
+          <strong style="color:#0f172a;">Nhân sự loại A (Cán bộ nguồn / IDP):</strong>
+          <p style="margin:4px 0 8px;font-size:13px;color:#475569;">Lộ trình thăng tiến nhanh, ghép cặp Mentor lãnh đạo, giao dự án chiến lược, kiểm tra năng lực quản trị.</p>
+          <span class="badge green">Trần Hoàng Nam · Đang thực hiện IDP</span>
+        </div>
+        <div style="margin:10px 0;padding:10px;background:#fff7ed;border:1px solid #fed7aa;border-radius:6px;">
+          <strong style="color:#9a3412;">Nhân sự loại C (Cần cải thiện / PIP 90 ngày):</strong>
+          <p style="margin:4px 0 8px;font-size:13px;color:#475569;">Trích xuất đúng 3 điểm yếu lớn nhất trong năm, gán khóa học bổ trợ bắt buộc trên LMS và lịch check-in 30-60-90 ngày.</p>
+          <span class="badge amber">Quy trình chuẩn hóa tự động qua LMS</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="section-heading"><div><h2>Cơ hội ngay trong hệ sinh thái</h2><p>Đề xuất dựa trên kỹ năng đã xác thực và nguyện vọng phát triển</p></div><span class="privacy-inline">${icon('lock',15)} Tìm kiếm riêng tư</span></div><div class="jobs-list">${jobs.map(j=>`<article class="card job-row"><span class="job-icon">${icon('briefcase',25)}</span><div class="job-info"><h3>${j.title}</h3><p>${j.team}</p>${tags(j.tags)}</div><div class="job-match"><strong>${j.match}%</strong><span>khớp kỹ năng</span></div><div class="job-place">${icon('pin',15)} ${j.place}</div>${button(s.interests.includes(j.id)?'Đã quan tâm':`Khám phá ${icon('arrow',16)}`,'job',j.id,'btn')}</article>`).join('')}</div>${aiNote('Bạn chủ động bày tỏ quan tâm. Trạng thái chỉ được mô phỏng cho bên nhận; tìm kiếm cơ hội không tự động thông báo cho quản lý hiện tại.')}`;
 }
 
@@ -109,7 +148,54 @@ export function recruitment(s,v) {
 }
 
 export function performance(s,v) {
-  return `${pageHead('HR MANAGEMENT','Hiệu suất bắt đầu từ đối thoại','Đủ bằng chứng cho kỳ đánh giá. Đủ bối cảnh cho cuộc trao đổi tiếp theo.',badge('Kỳ Q4 · 2026'))}<div class="profile-header">${avatar('HN','peach',true)}<div><h2>Trần Hoàng Nam</h2><p>Senior Backend Engineer · Người quản lý: Lê Thanh Hà</p></div><span class="badge green">1:1 tiếp theo · 16/11</span></div><div class="two-columns"><section class="card">${cardHead('Bằng chứng trong kỳ','Tổng hợp theo mục tiêu, giữ nguyên nguồn')}<div class="evidence-block"><span class="eyebrow">MỤC TIÊU 01 · CHẤT LƯỢNG HỆ THỐNG</span><h3>Giảm độ trễ Payment API</h3><p>P95 từ 420 ms xuống 280 ms, đạt mục tiêu dưới 300 ms.</p>${badge('PM · ATLAS-218','blue')}<small>Đo trong đợt load test 05/11/2026</small></div><div class="evidence-block"><span class="eyebrow">MỤC TIÊU 02 · CHIA SẺ TRI THỨC</span><h3>Đồng hành cùng 2 kỹ sư mới</h3><p>Hoàn thành 3/4 phiên chia sẻ về Java và thiết kế API.</p>${badge('LMS · ENG-042','blue')}<small>Phiên cuối dự kiến 20/11/2026</small></div>${aiNote('Còn thiếu phản hồi của một bên phối hợp. Bản nháp chưa đủ bằng chứng để kết luận toàn kỳ.')}<form id="review-form" class="editor-form"><label for="review-text">Nhận xét của quản lý</label><textarea id="review-text" name="text" rows="5" required placeholder="Viết nhận xét và dẫn bằng chứng...">${esc(s.review)}</textarea><button class="btn primary" type="submit">${icon('check',16)} Lưu bản nháp đánh giá</button></form></section><section class="card">${cardHead('Chuẩn bị buổi 1:1','16/11/2026 · 09:00–09:30',icon('users',20))}<div class="one-on-one-summary"><strong>Điểm đáng trao đổi</strong><p>Atlas đang cần thêm năng lực backend. Nam quan tâm kiến trúc hệ thống; cần trao đổi về lịch bàn giao và kế hoạch học Kafka.</p><span class="subtle">Nguồn mẫu: PM, hồ sơ kỹ năng, agenda lần trước</span></div><ul class="clean-list agenda-suggestions"><li>${icon('target',18)} Mục tiêu nào cần hỗ trợ trong 2 tuần tới?</li><li>${icon('book',18)} Có đủ thời gian dành cho học Kafka?</li><li>${icon('clock',18)} Tiến độ phiên chia sẻ thứ 4 đang thế nào?</li></ul><form id="agenda-form" class="editor-form"><label for="agenda-text">Agenda & việc cần theo dõi</label><textarea id="agenda-text" name="text" rows="6" required placeholder="Chỉnh sửa chủ đề, người phụ trách và hạn hoàn thành...">${esc(s.agenda || '1. Kiểm tra tiến độ Payment API — Hoàng Nam\n2. Thống nhất 2 giờ/tuần học Kafka — Nam & Thanh Hà\n3. Chuẩn bị phiên chia sẻ Java ngày 20/11 — Hoàng Nam')}</textarea><button class="btn primary" type="submit">${icon('check',16)} Xác nhận & lưu agenda</button></form><div class="privacy-note">${icon('lock',16)}<p>Ghi chú 1:1 chỉ dành cho hai bên. Không tự đưa vào hồ sơ đánh giá.</p></div></section></div>`;
+  const calibMetrics = metrics([
+    ['Phân phối Bell Curve', '10% A · 72% B · 18% C', 'Mục tiêu: 10% - 70% - 20%', 'chart', 'green'],
+    ['Quỹ thưởng mô phỏng', '14.2 / 15.0 tỷ', 'Dư 800 triệu (an toàn trần quỹ)', 'briefcase', 'green'],
+    ['Lệch chuẩn cảnh báo', '02 ngoại lệ', 'Rating inflation & Edge cases', 'shield', 'red'],
+    ['Kế hoạch kích hoạt', '01 IDP · 01 PIP', 'Tích hợp tự động lộ trình UC-04', 'book']
+  ]);
+  const calibSection = `
+  <section class="card lower-section">
+    ${cardHead('AI Calibration & Merit Planning Engine','Hội đồng HR điều phối phân phối chuẩn Bell Curve & kiểm soát trần ngân sách quỹ thưởng',badge('HITL Review Active','red'))}
+    ${calibMetrics}
+    ${aiNote('Vai trò HITL: AI đóng vai trò Người phản biện độc lập. AI đối chiếu kết quả tự chấm của phòng ban với dữ liệu thực tế 12 tháng (KPI, Jira, 360) và gắn cờ cảnh báo các trường hợp ngoại lệ (Edge cases). Hội đồng HR chỉ cần can thiệp các ca được gắn cờ, đảm bảo công bằng và giữ an toàn trần ngân sách tài chính.')}
+    <div class="two-columns" style="margin-top:16px;">
+      <div class="evidence-block">
+        <span class="eyebrow" style="color:var(--color-red,#ea0029);">CẢNH BÁO LỆCH CHUẨN · BIAS &amp; OUTLIER DETECTOR</span>
+        <div style="margin:10px 0;padding:10px;background:#fdf2f2;border-radius:6px;border-left:3px solid #ea0029;">
+          <strong>Đặng Bảo Ngọc (Product Designer)</strong> · Quản lý chấm: <span class="badge red">Loại A (Xuất sắc)</span>
+          <p style="margin:6px 0;font-size:13px;color:#555;"><strong>AI Phản biện độc lập:</strong> Output Jira/Figma 12 tháng thấp hơn 32% so với mặt bằng chung loại A của khối. Có dấu hiệu Rating Inflation. Đề xuất chuyển về <strong>Loại B</strong> để cân bằng Bell Curve.</p>
+          <div style="display:flex;gap:8px;margin-top:8px;">
+            <button class="btn small primary" type="button">${icon('check',14)} Chấp thuận kiến nghị AI (về B)</button>
+            <button class="btn small" type="button">Bảo lưu giải trình quản lý (giữ A)</button>
+          </div>
+        </div>
+        <div style="margin:10px 0;padding:10px;background:#f0f9ff;border-radius:6px;border-left:3px solid #0284c7;">
+          <strong>Trần Hoàng Nam (Senior Backend Engineer)</strong> · Quản lý chấm: <span class="badge green">Loại A (Xuất sắc)</span>
+          <p style="margin:6px 0;font-size:13px;color:#555;"><strong>AI Phản biện độc lập:</strong> Xác nhận hợp lệ. Vượt 112% KPI, P95 Payment API giảm 33%, hoàn thành 3 phiên chia sẻ tri thức. AI tự động kích hoạt <strong>Lộ trình cán bộ nguồn IDP (Succession Planning)</strong>.</p>
+        </div>
+      </div>
+      <div class="evidence-block">
+        <span class="eyebrow">MERIT SIMULATOR &amp; TÍCH HỢP LỘ TRÌNH (UC-04)</span>
+        <div class="table-wrap" style="margin-top:8px;">
+          <table>
+            <thead><tr><th>Xếp loại</th><th>Tỷ lệ</th><th>% Tăng lương</th><th>Thưởng</th><th>Trạng thái lộ trình</th></tr></thead>
+            <tbody>
+              <tr><td><span class="badge green">Loại A</span></td><td>10%</td><td>+15%</td><td>3.0 tháng</td><td>${badge('Kế hoạch IDP nguồn','green')}</td></tr>
+              <tr><td><span class="badge blue">Loại B</span></td><td>72%</td><td>+8%</td><td>1.8 tháng</td><td>${badge('Lộ trình chuyên môn','blue')}</td></tr>
+              <tr><td><span class="badge amber">Loại C</span></td><td>18%</td><td>0%</td><td>0.5 tháng</td><td>${badge('Cam kết PIP 90 ngày','red')}</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:12px;padding:10px;background:#f8fafc;border-radius:6px;font-size:13px;">
+          <strong>Auto-generator Output cho Trần Hoàng Nam (Loại A):</strong>
+          <p style="margin:4px 0;color:#64748b;">Đã tự động sinh Thư thông báo kết quả &amp; Bản kế hoạch phát triển IDP: Định hướng Tech Lead 2027, đăng ký khóa LMS Kiến trúc Microservices &amp; ghép cặp Mentor Đức Minh.</p>
+        </div>
+      </div>
+    </div>
+  </section>`;
+
+  return `${pageHead('HR MANAGEMENT','Hiệu suất & Điều phối ngân sách thưởng','Đủ bằng chứng cả năm. Cân bằng Bell Curve và phân bổ quỹ thưởng minh bạch.',badge('Kỳ Q4 · 2026'))}<div class="profile-header">${avatar('HN','peach',true)}<div><h2>Trần Hoàng Nam</h2><p>Senior Backend Engineer · Người quản lý: Lê Thanh Hà</p></div><span class="badge green">1:1 tiếp theo · 16/11</span></div><div class="two-columns"><section class="card">${cardHead('Bằng chứng trong kỳ','Tổng hợp theo mục tiêu, giữ nguyên nguồn')}<div class="evidence-block"><span class="eyebrow">MỤC TIÊU 01 · CHẤT LƯỢNG HỆ THỐNG</span><h3>Giảm độ trễ Payment API</h3><p>P95 từ 420 ms xuống 280 ms, đạt mục tiêu dưới 300 ms.</p>${badge('PM · ATLAS-218','blue')}<small>Đo trong đợt load test 05/11/2026</small></div><div class="evidence-block"><span class="eyebrow">MỤC TIÊU 02 · CHIA SẺ TRI THỨC</span><h3>Đồng hành cùng 2 kỹ sư mới</h3><p>Hoàn thành 3/4 phiên chia sẻ về Java và thiết kế API.</p>${badge('LMS · ENG-042','blue')}<small>Phiên cuối dự kiến 20/11/2026</small></div>${aiNote('Còn thiếu phản hồi của một bên phối hợp. Bản nháp chưa đủ bằng chứng để kết luận toàn kỳ.')}<form id="review-form" class="editor-form"><label for="review-text">Nhận xét của quản lý</label><textarea id="review-text" name="text" rows="5" required placeholder="Viết nhận xét và dẫn bằng chứng...">${esc(s.review)}</textarea><button class="btn primary" type="submit">${icon('check',16)} Lưu bản nháp đánh giá</button></form></section><section class="card">${cardHead('Chuẩn bị buổi 1:1','16/11/2026 · 09:00–09:30',icon('users',20))}<div class="one-on-one-summary"><strong>Điểm đáng trao đổi</strong><p>Atlas đang cần thêm năng lực backend. Nam quan tâm kiến trúc hệ thống; cần trao đổi về lịch bàn giao và kế hoạch học Kafka.</p><span class="subtle">Nguồn mẫu: PM, hồ sơ kỹ năng, agenda lần trước</span></div><ul class="clean-list agenda-suggestions"><li>${icon('target',18)} Mục tiêu nào cần hỗ trợ trong 2 tuần tới?</li><li>${icon('book',18)} Có đủ thời gian dành cho học Kafka?</li><li>${icon('clock',18)} Tiến độ phiên chia sẻ thứ 4 đang thế nào?</li></ul><form id="agenda-form" class="editor-form"><label for="agenda-text">Agenda & việc cần theo dõi</label><textarea id="agenda-text" name="text" rows="6" required placeholder="Chỉnh sửa chủ đề, người phụ trách và hạn hoàn thành...">${esc(s.agenda || '1. Kiểm tra tiến độ Payment API — Hoàng Nam\n2. Thống nhất 2 giờ/tuần học Kafka — Nam & Thanh Hà\n3. Chuẩn bị phiên chia sẻ Java ngày 20/11 — Hoàng Nam')}</textarea><button class="btn primary" type="submit">${icon('check',16)} Xác nhận & lưu agenda</button></form><div class="privacy-note">${icon('lock',16)}<p>Ghi chú 1:1 chỉ dành cho hai bên. Không tự đưa vào hồ sơ đánh giá.</p></div></section></div>${calibSection}`;
 }
 
 export function attendance(s,v) {

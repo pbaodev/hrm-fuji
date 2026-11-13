@@ -39,12 +39,12 @@ flowchart LR
             UC09(["UC-09 Xử lý bất thường công và OT<br/>trước chốt lương"])
             UC10(["UC-10 Phân tích sức khỏe tổ chức<br/>cấp đơn vị"])
             UC06(["UC-06 Phân tích chênh lệch<br/>cung–cầu nhân lực"])
-            UC07(["UC-07 Sàng lọc và xếp hạng<br/>hồ sơ ứng viên"])
-            UC08(["UC-08 Tổng hợp bằng chứng<br/>cho kỳ đánh giá"])
+            UC07(["UC-07 Sàng lọc hồ sơ &<br/>sinh đề test ứng viên"])
+            UC08(["UC-08 Đánh giá hiệu suất,<br/>Calibration & Merit Planning"])
         end
         subgraph GA["A. Employee AI"]
             UC05(["UC-05 Khám phá<br/>cơ hội nội bộ"])
-            UC04(["UC-04 Lập lộ trình học<br/>theo skill gap"])
+            UC04(["UC-04 Lộ trình IDP/PIP &<br/>bài test thích ứng LMS"])
             UC03(["UC-03 Tìm và tóm tắt<br/>tri thức nội bộ"])
             UC02(["UC-02 Tạo và theo dõi<br/>yêu cầu nghỉ phép"])
             UC01(["UC-01 Tra cứu trạng thái ứng tuyển<br/>và thủ tục nhận việc"])
@@ -86,7 +86,7 @@ flowchart LR
         UC01(["UC-01 Tra cứu trạng thái ứng tuyển<br/>và thủ tục nhận việc"])
         UC02(["UC-02 Tạo và theo dõi<br/>yêu cầu nghỉ phép"])
         UC03(["UC-03 Tìm và tóm tắt<br/>tri thức nội bộ"])
-        UC04(["UC-04 Lập lộ trình học<br/>theo skill gap"])
+        UC04(["UC-04 Lập & thực thi lộ trình IDP/PIP<br/>kèm bài test thích ứng LMS"])
         UC05(["UC-05 Khám phá<br/>cơ hội nội bộ"])
     end
 
@@ -125,7 +125,7 @@ flowchart LR
     subgraph GB["B. HR Management AI"]
         UC06(["UC-06 Phân tích chênh lệch<br/>cung–cầu nhân lực"])
         UC07(["UC-07 Sàng lọc và xếp hạng<br/>hồ sơ ứng viên"])
-        UC08(["UC-08 Tổng hợp bằng chứng<br/>cho kỳ đánh giá"])
+        UC08(["UC-08 Đánh giá hiệu suất,<br/>Calibration & Merit Planning"])
         UC09(["UC-09 Xử lý bất thường công và OT<br/>trước chốt lương"])
         UC10(["UC-10 Phân tích sức khỏe tổ chức<br/>cấp đơn vị"])
     end
@@ -138,16 +138,18 @@ flowchart LR
 
     HRBP === UC06
     HRBP === UC10
+    HRBP === UC08
     REC === UC07
     LM === UC08
     PAY === UC09
 
-    HRBP --- UC08
     LM --- UC09
 
     UC06 --- BUH
     UC06 --- FIN
     UC07 --- HM
+    UC08 --- BUH
+    UC08 --- FIN
     UC08 --- EMP
     UC09 --- EMP
     UC10 --- BUH
@@ -249,11 +251,14 @@ flowchart LR
     UC12 == "dữ liệu kỹ năng" ==> UC05
     UC12 == "dữ liệu kỹ năng" ==> UC06
     UC12 == "dữ liệu kỹ năng" ==> UC13
+    UC04 == "kết quả test xác thực kỹ năng" ==> UC12
 
     UC06 -- "nối tiếp" --> UC13
     UC06 -- "nối tiếp" --> UC16
     UC13 -- "nối tiếp" --> UC07
     UC14 -- "nối tiếp" --> UC08
+    UC08 -- "nối tiếp (IDP/PIP)" --> UC04
+    UC08 -- "chốt quỹ thưởng" --> UC09
 ```
 
 UC-03 và UC-10 không có quan hệ với use case khác nên không xuất hiện trong sơ đồ này.
@@ -270,7 +275,10 @@ UC-03 và UC-10 không có quan hệ với use case khác nên không xuất hi�
 | UC-04 mở rộng UC-05 | «extend» | Chỉ khi cơ hội nhân viên quan tâm còn skill gap |
 | UC-04 mở rộng UC-13 | «extend» | Chỉ khi phương án bố trí khớp một phần và cần reskill |
 | UC-12 cấp dữ liệu cho UC-04, 05, 06, 13 | Dữ liệu | Bốn use case này đọc hồ sơ kỹ năng; chất lượng của chúng phụ thuộc độ phủ và độ mới của hồ sơ |
+| UC-04 cập nhật UC-12 | Dữ liệu | Điểm số các bài test checkpoint mốc lộ trình và test benchmark định kỳ từ LMS được cập nhật ngược vào hồ sơ kỹ năng |
 | UC-06 nối tiếp UC-13 | Nối tiếp | Gap được chọn đóng bằng nội bộ trở thành nhu cầu nhân lực để tìm phương án bố trí |
 | UC-06 nối tiếp UC-16 | Nối tiếp | Khi phân tích cung–cầu dẫn tới quyết định thu hẹp, danh sách vị trí dư trở thành đầu vào của UC-16 |
-| UC-13 nối tiếp UC-07 | Nối tiếp | Khi không có phương án nội bộ, nhu cầu chuyển sang tuyển ngoài |
-| UC-14 nối tiếp UC-08 | Nối tiếp | Ghi chú 1:1 chỉ trở thành bằng chứng đánh giá khi manager chủ động đưa vào |
+| UC-13 nối tiếp UC-07 | Nối tiếp | Khi không có phương án nội bộ, nhu cầu chuyển sang tuyển ngoài (kèm sinh đề test ứng viên theo role) |
+| UC-14 nối tiếp UC-08 | Nối tiếp | Ghi chú 1:1 và tiến độ action items được gom làm bằng chứng đánh giá |
+| UC-08 nối tiếp UC-04 | Nối tiếp (Lộ trình) | Kết quả xếp loại tự động kích hoạt lập lộ trình IDP cho loại A (cán bộ nguồn/kế nhiệm) hoặc bản cam kết PIP 90 ngày cho loại C |
+| UC-08 nối tiếp UC-09 | Nối tiếp | Kết quả phân bổ quỹ thưởng sau khi Hội đồng HR duyệt được chuyển sang Payroll để chi trả kỳ cuối năm |

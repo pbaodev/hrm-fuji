@@ -4,10 +4,10 @@ export const kinds = { ai: 'AI', rule: 'Quy tắc', human: 'Con người' };
 // Luồng tóm gọn hiển thị dưới tiêu đề mỗi màn hình.
 export const flows = {
   assistant: { uc: 'UC-01 · 02 · 03', steps: [['human','Nhân viên hỏi'],['ai','Hiểu câu hỏi, tìm nguồn'],['rule','Kiểm tra số phép, quyền xem'],['ai','Trả lời kèm nguồn'],['human','Xác nhận gửi yêu cầu']] },
-  learning: { uc: 'UC-04 · 05', steps: [['human','Chọn mục tiêu'],['rule','So kỹ năng với yêu cầu'],['ai','Gợi ý khóa học, cơ hội'],['human','Đăng ký, bày tỏ quan tâm']] },
+  learning: { uc: 'UC-04 · 05', steps: [['ai','Tiếp nhận IDP/PIP từ UC-08'],['rule','Phân tích gap & mốc lộ trình'],['ai','Gợi ý khóa học, sinh đề test LMS'],['human','Học tập, thi checkpoint & nghiệm thu']] },
   workforce: { uc: 'UC-06 · 10', steps: [['rule','Tổng hợp số liệu theo khối'],['ai','Dự báo, giải thích biến động'],['ai','Đề xuất hành động'],['human','HR phụ trách khối quyết định']] },
   recruitment: { uc: 'UC-07', steps: [['ai','Đọc CV'],['rule','Lọc tiêu chí bắt buộc'],['ai','Chấm điểm kèm bằng chứng'],['human','Chuyên viên tuyển dụng chốt danh sách']] },
-  performance: { uc: 'UC-08 · 14', steps: [['rule','Gom bằng chứng trong kỳ'],['ai','Tóm tắt, gợi ý chủ đề'],['human','Quản lý viết nhận xét, chốt agenda']] },
+  performance: { uc: 'UC-08 · 14', steps: [['rule','Gom dữ liệu 1 năm (KPI/Jira/360)'],['ai','Evidence Synthesizer & Bias Detector'],['ai','Calibration & Merit Simulator'],['human','Hội đồng HR duyệt ngoại lệ (HITL)']] },
   attendance: { uc: 'UC-09', steps: [['rule','Phát hiện sai lệch công'],['ai','Giải thích nguyên nhân, đề xuất sửa'],['human','Quản lý xác nhận'],['human','HR vận hành duyệt']] },
   workflows: { uc: 'UC-11 · 15', steps: [['ai','Phân loại yêu cầu'],['rule','Giao người, đặt hạn'],['human','Từng người duyệt bước của mình'],['rule','Ghi lịch sử, hoàn tất']] },
   skills: { uc: 'UC-12', steps: [['ai','Rút kỹ năng từ CV, dự án'],['human','Nhân viên xác nhận'],['human','Quản lý xác thực'],['rule','Lưu kèm bằng chứng']] },
