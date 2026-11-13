@@ -15,27 +15,23 @@ docs/
 
 **Bối cảnh** tập đoàn IT lớn liên tục mở rộng và tái cấu trúc : dự án, nhân lực kém hiểu quả cắt bỏ nhanh.bài toán bọn em đưa ra để phân tích các use case là tạo hệ thống AI hỗ trợ toàn bộ vòng đời của nhân sự làm việc, đào tạo, phát triển, luân chuyển cho đến nghỉ việc.
 
-
 **Bài toán:** xây dựng AI-powered Workforce Ecosystem giúp nhân viên làm việc hiệu quả hơn, đồng thời hỗ trợ HR và lãnh đạo quản trị, phân bổ và tối ưu nguồn nhân lực toàn tập đoàn.
 
 | Mục tiêu | Ý nghĩa |
-|---|---|
+| --- | --- |
 | Empower Employees | Giúp nhân viên tự giải quyết nhu cầu, thực hiện công việc, tiếp cận tri thức,tài liệu công ty, phát triển kỹ năng và nâng cao năng suất, lộ trình sự nghiệp; giảm thao tác thủ công và phụ thuộc vào HR. |
 | Augment HR & Management | Hỗ trợ HR, Manager và lãnh đạo quản trị nguồn nhân lực, phân tích dữ liệu, ra quyết định, chuẩn hóa quy trình và giảm tải vận hành |
 | Automate Workflows | Chuẩn hóa và tự động hóa quy trình xuyên phòng ban |
 | Optimize Workforce | Khai thác kỹ năng nội bộ, điều chuyển linh hoạt, giữ chân nhân tài |
 
-
 Chi tiết: [AI_Workforce_Ecosystem.md](01-overview/AI_Workforce_Ecosystem.md)
 
 ## 2. Product mindmap
 
-10 feature chính; mỗi nhánh gồm thành phần AI và điểm con người quyết định.
-
 ![Product mindmap](02-product-mindmap/Product_Mindmap.png)
 
 | File | Nội dung |
-|---|---|
+| --- | --- |
 | [Product_Mindmap.md](02-product-mindmap/Product_Mindmap.md) | Mindmap dạng outline |
 | [Product_Mindmap_Detail.md](02-product-mindmap/Product_Mindmap_Detail.md) | Giải thích từng thành phần, gắn nhãn `[AI]`, `[Rules]`, `[Người]` |
 | [Product_Mindmap.html](02-product-mindmap/Product_Mindmap.html) | Bản HTML (mở bằng trình duyệt) |
@@ -100,7 +96,7 @@ flowchart LR
 ```
 
 | ID | Use case | Người thực hiện | Người liên quan | Luồng |
-|---|---|---|---|---|
+| --- | --- | --- | --- | --- |
 | UC-01 | Tra cứu hồ sơ ứng tuyển, nhận việc | Ứng viên, nhân viên mới | Tuyển dụng, HR vận hành | Hỏi → AI tra hồ sơ → trả lời kèm việc còn thiếu |
 | UC-02 | Xin nghỉ phép qua chat | Nhân viên | Quản lý trực tiếp | Mô tả nhu cầu → kiểm tra số ngày phép → quản lý duyệt |
 | UC-03 | Tìm và tóm tắt tài liệu nội bộ | Nhân viên | Không có | Hỏi → tìm tài liệu được phép xem → AI tóm tắt kèm nguồn |
@@ -119,7 +115,7 @@ flowchart LR
 | UC-16 | Thu hẹp đơn vị, cắt giảm nhân sự | HR phụ trách khối | Trưởng khối, Giám đốc nhân sự, pháp chế, nhân viên | Lập danh sách bị ảnh hưởng → AI tìm vị trí nội bộ, học bù → hết phương án thì pháp chế rà soát → Giám đốc nhân sự duyệt → nghỉ việc và bàn giao |
 
 | File | Nội dung |
-|---|---|
+| --- | --- |
 | [UC_01_Catalog.md](03-use-cases/UC_01_Catalog.md) | Bảng 16 use case, actor, phân vai AI/rules/người |
 | [UC_02_Diagrams.md](03-use-cases/UC_02_Diagrams.md) | Sơ đồ theo từng nhóm và quan hệ include/extend |
 | [UC_03_Specifications.md](03-use-cases/UC_03_Specifications.md) | Đặc tả chi tiết từng use case |
